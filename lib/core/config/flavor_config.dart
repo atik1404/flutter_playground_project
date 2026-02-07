@@ -1,0 +1,30 @@
+import 'package:flutter/services.dart';
+import 'package:playground_flutter_project/common/utils/logger_utils';
+
+final class FlavorConfig {
+  static final FlavorConfig _instance = FlavorConfig._internal();
+  factory FlavorConfig() => _instance;
+
+  Flavor _appFlavor = Flavor.development;
+
+  Flavor get appFlavor => _appFlavor;
+  FlavorConfig._internal();
+
+  Future<void> initialize() async {
+    try {
+      final flavorString = await const MethodChannel("flavor_channel")
+          .invokeMethod<String>("getFlavor");
+      _appFlavor = flavorString == "production" ? Flavor.production : Flavor.development;
+    } catch (e) {
+      appLog.shout("Error fetching app flavor: $e");
+    }
+  }
+
+  bool isDevelopment() => _appFlavor == Flavor.development;
+  bool isProduction() => _appFlavor == Flavor.production;
+}
+
+enum Flavor {
+  development,
+  production,
+}
