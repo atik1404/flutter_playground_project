@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// A wrapper scaffold with consistent app bar and navigation bar handling.
-class ScaffoldAppbar extends StatelessWidget {
+class AppScaffold extends StatelessWidget {
   /// The app bar to display.
   final PreferredSizeWidget? appbar;
 
@@ -26,7 +26,7 @@ class ScaffoldAppbar extends StatelessWidget {
   /// Whether to resize body when keyboard appears.
   final bool resizeToAvoidBottomInset;
 
-  const ScaffoldAppbar({
+  const AppScaffold({
     super.key,
     this.appbar,
     this.actions,

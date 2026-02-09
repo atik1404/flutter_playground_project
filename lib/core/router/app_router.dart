@@ -8,19 +8,14 @@ List<BaseRouter> get routers => [SplashRouter()];
 
 final GoRouter router = goRouter();
 final routeObserver = RouteObserver<ModalRoute<void>>();
-final GlobalKey<NavigatorState> rootShelllNavKey = GlobalKey<NavigatorState>();
+
 final GlobalKey<NavigatorState> rootNavKey = GlobalKey<NavigatorState>();
 
 GoRouter goRouter() {
   return GoRouter(
     initialLocation: AppRoutesName.splashScreen,
     navigatorKey: rootNavKey,
-    routes: [
-      ShellRoute(
-        navigatorKey: rootShelllNavKey,
-        routes: [...routers.expand((r) => r.routes)],
-      ),
-    ],
+    routes: [...routers.expand((r) => r.routes)],
     errorBuilder: (context, state) {
       return Scaffold(
         body: Center(
