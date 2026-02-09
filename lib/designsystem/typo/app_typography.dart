@@ -1,60 +1,144 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:playground_flutter_project/designsystem/theme/utils/text_style_fields_mixin.dart';
 
-import '../theme/utils/text_style_fields_mixin.dart';
-
+/// Defines the typography system for the application.
+///
+/// This extension provides a consistent set of text styles categorized by size
+/// (Title Large/Medium/Small, Body Large/Medium/Small/ExtraSmall) and weight
+/// (Regular, Medium, SemiBold, Bold, Light).
+///
+/// It uses [TextStyleFieldsMixin] to support theme extension features like
+/// `lerp` and `copyWith` efficiently.
 final class AppTypography extends ThemeExtension<AppTypography>
     with TextStyleFieldsMixin<AppTypography> {
+  // --- Title Large ---
+
+  /// Title Large - Regular (400) - 22sp
   final TextStyle titleLargeRegular;
+
+  /// Title Large - Medium (500) - 22sp
   final TextStyle titleLargeMedium;
+
+  /// Title Large - SemiBold (600) - 22sp
   final TextStyle titleLargeSemiBold;
+
+  /// Title Large - Bold (700) - 22sp
   final TextStyle titleLargeBold;
+
+  /// Title Large - Light (300) - 22sp
   final TextStyle titleLargeLight;
 
+  // --- Title Medium ---
+
+  /// Title Medium - Regular (400) - 20sp
   final TextStyle titleMediumRegular;
-  final TextStyle titleMedium;
+
+  /// Title Medium - Medium (500) - 20sp
+  final TextStyle titleMediumMedium;
+
+  /// Title Medium - SemiBold (600) - 20sp
   final TextStyle titleMediumSemiBold;
+
+  /// Title Medium - Bold (700) - 20sp
   final TextStyle titleMediumBold;
+
+  /// Title Medium - Light (300) - 20sp
   final TextStyle titleMediumLight;
 
+  // --- Title Small ---
+
+  /// Title Small - Regular (400) - 18sp
   final TextStyle titleSmallRegular;
+
+  /// Title Small - Medium (500) - 18sp
   final TextStyle titleSmallMedium;
+
+  /// Title Small - SemiBold (600) - 18sp
   final TextStyle titleSmallSemiBold;
+
+  /// Title Small - Bold (700) - 18sp
   final TextStyle titleSmallBold;
+
+  /// Title Small - Light (300) - 18sp
   final TextStyle titleSmallLight;
 
+  // --- Body Large ---
+
+  /// Body Large - Regular (400) - 16sp
   final TextStyle bodyLargeRegular;
+
+  /// Body Large - Medium (500) - 16sp
   final TextStyle bodyLargeMedium;
+
+  /// Body Large - SemiBold (600) - 16sp
   final TextStyle bodyLargeSemiBold;
+
+  /// Body Large - Bold (700) - 16sp
   final TextStyle bodyLargeBold;
+
+  /// Body Large - Light (300) - 16sp
   final TextStyle bodyLargeLight;
 
+  // --- Body Medium ---
+
+  /// Body Medium - Regular (400) - 14sp
   final TextStyle bodyMediumRegular;
-  final TextStyle bodyMedium;
+
+  /// Body Medium - Medium (500) - 14sp
+  final TextStyle bodyMediumMedium;
+
+  /// Body Medium - SemiBold (600) - 14sp
   final TextStyle bodyMediumSemiBold;
+
+  /// Body Medium - Bold (700) - 14sp
   final TextStyle bodyMediumBold;
+
+  /// Body Medium - Light (300) - 14sp
   final TextStyle bodyMediumLight;
 
+  // --- Body Small ---
+
+  /// Body Small - Regular (400) - 12sp
   final TextStyle bodySmallRegular;
+
+  /// Body Small - Medium (500) - 12sp
   final TextStyle bodySmallMedium;
+
+  /// Body Small - SemiBold (600) - 12sp
   final TextStyle bodySmallSemiBold;
+
+  /// Body Small - Bold (700) - 12sp
   final TextStyle bodySmallBold;
+
+  /// Body Small - Light (300) - 12sp
   final TextStyle bodySmallLight;
 
+  // --- Body Extra Small ---
+
+  /// Body Extra Small - Regular (400) - 11sp
   final TextStyle bodyExtraSmallRegular;
+
+  /// Body Extra Small - Medium (500) - 11sp
   final TextStyle bodyExtraSmallMedium;
+
+  /// Body Extra Small - SemiBold (600) - 11sp
   final TextStyle bodyExtraSmallSemiBold;
+
+  /// Body Extra Small - Bold (700) - 11sp
   final TextStyle bodyExtraSmallBold;
+
+  /// Body Extra Small - Light (300) - 11sp
   final TextStyle bodyExtraSmallLight;
 
-  AppTypography._({
+  const AppTypography._({
     required this.titleLargeRegular,
     required this.titleLargeMedium,
     required this.titleLargeSemiBold,
     required this.titleLargeBold,
     required this.titleLargeLight,
     required this.titleMediumRegular,
-    required this.titleMedium,
+    required this.titleMediumMedium,
     required this.titleMediumSemiBold,
     required this.titleMediumBold,
     required this.titleMediumLight,
@@ -69,7 +153,7 @@ final class AppTypography extends ThemeExtension<AppTypography>
     required this.bodyLargeBold,
     required this.bodyLargeLight,
     required this.bodyMediumRegular,
-    required this.bodyMedium,
+    required this.bodyMediumMedium,
     required this.bodyMediumSemiBold,
     required this.bodyMediumBold,
     required this.bodyMediumLight,
@@ -94,7 +178,7 @@ final class AppTypography extends ThemeExtension<AppTypography>
       titleLargeBold: styles[3],
       titleLargeLight: styles[4],
       titleMediumRegular: styles[5],
-      titleMedium: styles[6],
+      titleMediumMedium: styles[6],
       titleMediumSemiBold: styles[7],
       titleMediumBold: styles[8],
       titleMediumLight: styles[9],
@@ -109,7 +193,7 @@ final class AppTypography extends ThemeExtension<AppTypography>
       bodyLargeBold: styles[18],
       bodyLargeLight: styles[19],
       bodyMediumRegular: styles[20],
-      bodyMedium: styles[21],
+      bodyMediumMedium: styles[21],
       bodyMediumSemiBold: styles[22],
       bodyMediumBold: styles[23],
       bodyMediumLight: styles[24],
@@ -128,35 +212,42 @@ final class AppTypography extends ThemeExtension<AppTypography>
 
   @override
   List<TextStyle> get textStyleFields => [
-        titleLargeRegular,
-        titleLargeMedium,
-        titleLargeSemiBold,
-        titleLargeBold,
-        titleMediumRegular,
-        titleMedium,
-        titleMediumSemiBold,
-        titleMediumBold,
-        titleSmallRegular,
-        titleSmallMedium,
-        titleSmallSemiBold,
-        titleSmallBold,
-        bodyLargeRegular,
-        bodyLargeMedium,
-        bodyLargeSemiBold,
-        bodyLargeBold,
-        bodyMediumRegular,
-        bodyMedium,
-        bodyMediumSemiBold,
-        bodyMediumBold,
-        bodySmallRegular,
-        bodySmallMedium,
-        bodySmallSemiBold,
-        bodySmallBold,
-        bodyExtraSmallRegular,
-        bodyExtraSmallMedium,
-        bodyExtraSmallSemiBold,
-        bodyExtraSmallBold,
-      ];
+    titleLargeRegular,
+    titleLargeMedium,
+    titleLargeSemiBold,
+    titleLargeBold,
+    titleLargeLight,
+    titleMediumRegular,
+    titleMediumMedium,
+    titleMediumSemiBold,
+    titleMediumBold,
+    titleMediumLight,
+    titleSmallRegular,
+    titleSmallMedium,
+    titleSmallSemiBold,
+    titleSmallBold,
+    titleSmallLight,
+    bodyLargeRegular,
+    bodyLargeMedium,
+    bodyLargeSemiBold,
+    bodyLargeBold,
+    bodyLargeLight,
+    bodyMediumRegular,
+    bodyMediumMedium,
+    bodyMediumSemiBold,
+    bodyMediumBold,
+    bodyMediumLight,
+    bodySmallRegular,
+    bodySmallMedium,
+    bodySmallSemiBold,
+    bodySmallBold,
+    bodySmallLight,
+    bodyExtraSmallRegular,
+    bodyExtraSmallMedium,
+    bodyExtraSmallSemiBold,
+    bodyExtraSmallBold,
+    bodyExtraSmallLight,
+  ];
 
   @override
   ThemeExtension<AppTypography> copyWith({
@@ -164,63 +255,80 @@ final class AppTypography extends ThemeExtension<AppTypography>
     TextStyle? titleLargeMedium,
     TextStyle? titleLargeSemiBold,
     TextStyle? titleLargeBold,
+    TextStyle? titleLargeLight,
     TextStyle? titleMediumRegular,
-    TextStyle? titleMedium,
+    TextStyle? titleMediumMedium,
     TextStyle? titleMediumSemiBold,
     TextStyle? titleMediumBold,
+    TextStyle? titleMediumLight,
     TextStyle? titleSmallRegular,
     TextStyle? titleSmallMedium,
     TextStyle? titleSmallSemiBold,
     TextStyle? titleSmallBold,
+    TextStyle? titleSmallLight,
     TextStyle? bodyLargeRegular,
     TextStyle? bodyLargeMedium,
     TextStyle? bodyLargeSemiBold,
     TextStyle? bodyLargeBold,
+    TextStyle? bodyLargeLight,
     TextStyle? bodyMediumRegular,
-    TextStyle? bodyMedium,
+    TextStyle? bodyMediumMedium,
     TextStyle? bodyMediumSemiBold,
     TextStyle? bodyMediumBold,
+    TextStyle? bodyMediumLight,
     TextStyle? bodySmallRegular,
     TextStyle? bodySmallMedium,
     TextStyle? bodySmallSemiBold,
     TextStyle? bodySmallBold,
+    TextStyle? bodySmallLight,
     TextStyle? bodyExtraSmallRegular,
     TextStyle? bodyExtraSmallMedium,
     TextStyle? bodyExtraSmallSemiBold,
     TextStyle? bodyExtraSmallBold,
+    TextStyle? bodyExtraSmallLight,
   }) {
     return copyWithList([
       titleLargeRegular,
       titleLargeMedium,
       titleLargeSemiBold,
       titleLargeBold,
+      titleLargeLight,
       titleMediumRegular,
-      titleMedium,
+      titleMediumMedium,
       titleMediumSemiBold,
       titleMediumBold,
+      titleMediumLight,
       titleSmallRegular,
       titleSmallMedium,
       titleSmallSemiBold,
       titleSmallBold,
+      titleSmallLight,
       bodyLargeRegular,
       bodyLargeMedium,
       bodyLargeSemiBold,
       bodyLargeBold,
+      bodyLargeLight,
       bodyMediumRegular,
-      bodyMedium,
+      bodyMediumMedium,
       bodyMediumSemiBold,
       bodyMediumBold,
+      bodyMediumLight,
       bodySmallRegular,
       bodySmallMedium,
       bodySmallSemiBold,
       bodySmallBold,
+      bodySmallLight,
       bodyExtraSmallRegular,
       bodyExtraSmallMedium,
       bodyExtraSmallSemiBold,
       bodyExtraSmallBold,
+      bodyExtraSmallLight,
     ]);
   }
 
+  /// The standard typography instance for the application.
+  ///
+  /// Uses "Roboto" font family and defines sizes in `sp` (screenutil).
   static final instance = AppTypography._(
     titleLargeRegular: _getTypoStyle(22, FontWeight.w400),
     titleLargeMedium: _getTypoStyle(22, FontWeight.w500),
@@ -228,7 +336,7 @@ final class AppTypography extends ThemeExtension<AppTypography>
     titleLargeBold: _getTypoStyle(22, FontWeight.w700),
     titleLargeLight: _getTypoStyle(22, FontWeight.w300),
     titleMediumRegular: _getTypoStyle(20, FontWeight.w400),
-    titleMedium: _getTypoStyle(20, FontWeight.w500),
+    titleMediumMedium: _getTypoStyle(20, FontWeight.w500),
     titleMediumSemiBold: _getTypoStyle(20, FontWeight.w600),
     titleMediumBold: _getTypoStyle(20, FontWeight.w700),
     titleMediumLight: _getTypoStyle(20, FontWeight.w300),
@@ -243,7 +351,7 @@ final class AppTypography extends ThemeExtension<AppTypography>
     bodyLargeBold: _getTypoStyle(16, FontWeight.w700),
     bodyLargeLight: _getTypoStyle(16, FontWeight.w300),
     bodyMediumRegular: _getTypoStyle(14, FontWeight.w400),
-    bodyMedium: _getTypoStyle(14, FontWeight.w500),
+    bodyMediumMedium: _getTypoStyle(14, FontWeight.w500),
     bodyMediumSemiBold: _getTypoStyle(14, FontWeight.w600),
     bodyMediumBold: _getTypoStyle(14, FontWeight.w700),
     bodyMediumLight: _getTypoStyle(14, FontWeight.w300),

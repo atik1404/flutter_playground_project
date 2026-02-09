@@ -2,10 +2,19 @@ part of 'app_colors_aggregator.dart';
 
 final class TextColor extends ThemeExtension<TextColor>
     with ColorFieldsMixin<TextColor> {
+  /// The primary text color (e.g., headings, body).
   final Color primary;
+
+  /// The secondary text color (e.g., subtitles, captions).
   final Color secondary;
+
+  /// The tertiary text color (e.g., less important info).
   final Color tertiary;
+
+  /// White text color (typically used on dark backgrounds).
   final Color white;
+
+  /// The text color used to indicate error.
   final Color error;
 
   TextColor._({
@@ -17,16 +26,18 @@ final class TextColor extends ThemeExtension<TextColor>
   });
 
   @override
-  ThemeExtension<TextColor> copyWith({
+  TextColor copyWith({
     Color? primaryTextColor,
     Color? secondaryTextColor,
     Color? whiteTextColor,
     Color? errorTextColor,
+    Color? tertiaryTextColor,
   }) {
     return copyWithList([
       primaryTextColor,
       secondaryTextColor,
       whiteTextColor,
+      tertiaryTextColor,
       errorTextColor,
     ]);
   }
@@ -39,8 +50,8 @@ final class TextColor extends ThemeExtension<TextColor>
     return TextColor._(
       primary: colors[0],
       secondary: colors[1],
-      tertiary: colors[2],
-      white: colors[3],
+      white: colors[2],
+      tertiary: colors[3],
       error: colors[4],
     );
   }

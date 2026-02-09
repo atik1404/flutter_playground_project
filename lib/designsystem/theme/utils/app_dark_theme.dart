@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../dimensions/dimension_aggregator.dart';
-import '../../typo/app_typography.dart';
-import '../colors/app_colors_aggregator.dart';
+import 'package:playground_flutter_project/designsystem/dimensions/dimension_aggregator.dart';
+import 'package:playground_flutter_project/designsystem/typo/app_typography.dart';
+import 'package:playground_flutter_project/designsystem/theme/colors/app_colors_aggregator.dart';
 
 final class AppDarkTheme {
   static ThemeData themeData() {

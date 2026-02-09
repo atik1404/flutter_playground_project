@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../utils/color_fields_mixin.dart';
-import 'color_pallet.dart';
+import 'package:playground_flutter_project/designsystem/theme/utils/color_fields_mixin.dart';
+import 'package:playground_flutter_project/designsystem/theme/colors/color_pallet.dart';
 
 part 'appbar_color.dart';
 part 'background_color.dart';

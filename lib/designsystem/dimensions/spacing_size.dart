@@ -90,12 +90,12 @@ final class SpacingSize extends ThemeExtension<SpacingSize>
   List<double> get numericFields => [none, xxs, xs, sm, md, lg, xl, xxl];
 
   /// The default standard instance of [SpacingSize].
-  static const _standard = SpacingSize._(
+  static const standard = SpacingSize._(
     none: 0,
     xxs: 2,
     xs: 4,
     sm: 8,
-    md: 16, // Renamed from 'base' to 'md' to signify standard medium spacing
+    md: 16,
     lg: 24,
     xl: 32,
     xxl: 48,

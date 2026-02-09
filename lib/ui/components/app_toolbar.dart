@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../../../designsystem/extensions/theme_context_extension.dart';
+import 'package:playground_flutter_project/designsystem/extensions/theme_context_extension.dart';
 
+/// A standard app bar implementation with consistent styling.
 class AppToolbar extends StatelessWidget implements PreferredSizeWidget {
+  /// The title text.
   final String title;
+
+  /// Whether to show the back button. Defaults to true.
   final bool isBackButtonVisible;
+
+  /// Callback when the back button is pressed.
   final VoidCallback? onClickBackButton;
 
   const AppToolbar({

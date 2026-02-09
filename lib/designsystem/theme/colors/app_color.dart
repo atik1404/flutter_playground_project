@@ -1,25 +1,56 @@
 part of 'app_colors_aggregator.dart';
 
-class AppColor extends ThemeExtension<AppColor>
+final class AppColor extends ThemeExtension<AppColor>
     with ColorFieldsMixin<AppColor> {
+  /// The primary color of the application.
   final Color primary;
+
+  /// The content color (text/icon) on the primary color.
   final Color onPrimary;
+
+  /// The primary container color.
   final Color primaryContainer;
+
+  /// The content color (text/icon) on the primary container.
   final Color onPrimaryContainer;
+
+  /// The secondary color of the application.
   final Color secondary;
+
+  /// The content color (text/icon) on the secondary color.
   final Color onSecondary;
+
+  /// The secondary container color.
   final Color secondaryContainer;
+
+  /// The content color (text/icon) on the secondary container.
   final Color onSecondaryContainer;
+
+  /// The tertiary color of the application.
   final Color tertiary;
+
+  /// The content color (text/icon) on the tertiary color.
   final Color onTertiary;
+
+  /// The surface color (e.g., cards, sheets).
   final Color surface;
+
+  /// The content color (text/icon) on the surface.
   final Color onSurface;
+
+  /// The color used to indicate error.
   final Color error;
+
+  /// The content color (text/icon) on the error color.
   final Color onError;
+
+  /// The inverse surface color.
   final Color inverseSurface;
+
+  /// The content color (text/icon) on the inverse surface.
   final Color onInverseSurface;
 
-  AppColor._({
+  const AppColor._({
     required this.primary,
     required this.onPrimary,
     required this.primaryContainer,
@@ -117,43 +148,6 @@ class AppColor extends ThemeExtension<AppColor>
       inverseSurface,
       onInverseSurface,
     ]);
-  }
-
-  @override
-  AppColor lerp(ThemeExtension<AppColor>? other, double t) {
-    if (other is! AppColor) {
-      return this;
-    }
-
-    return AppColor._(
-      primary: Color.lerp(primary, other.primary, t) ?? primary,
-      onPrimary: Color.lerp(onPrimary, other.onPrimary, t) ?? onPrimary,
-      primaryContainer:
-          Color.lerp(primaryContainer, other.primaryContainer, t) ??
-          primaryContainer,
-      onPrimaryContainer:
-          Color.lerp(onPrimaryContainer, other.onPrimaryContainer, t) ??
-          onPrimaryContainer,
-      secondary: Color.lerp(secondary, other.secondary, t) ?? secondary,
-      onSecondary: Color.lerp(onSecondary, other.onSecondary, t) ?? onSecondary,
-      secondaryContainer:
-          Color.lerp(secondaryContainer, other.secondaryContainer, t) ??
-          secondaryContainer,
-      onSecondaryContainer:
-          Color.lerp(onSecondaryContainer, other.onSecondaryContainer, t) ??
-          onSecondaryContainer,
-      tertiary: Color.lerp(tertiary, other.tertiary, t) ?? tertiary,
-      onTertiary: Color.lerp(onTertiary, other.onTertiary, t) ?? onTertiary,
-      surface: Color.lerp(surface, other.surface, t) ?? surface,
-      onSurface: Color.lerp(onSurface, other.onSurface, t) ?? onSurface,
-      error: Color.lerp(error, other.error, t) ?? error,
-      onError: Color.lerp(onError, other.onError, t) ?? onError,
-      inverseSurface:
-          Color.lerp(inverseSurface, other.inverseSurface, t) ?? inverseSurface,
-      onInverseSurface:
-          Color.lerp(onInverseSurface, other.onInverseSurface, t) ??
-          onInverseSurface,
-    );
   }
 
   static final _lightThemeColor = AppColor._(

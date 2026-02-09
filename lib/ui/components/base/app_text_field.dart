@@ -100,14 +100,13 @@ class _AppTextFieldState extends State<AppTextField> {
   /// Returns a styled [TextFormField] wrapped in a [SizedBox] for proper sizing.
   @override
   Widget build(BuildContext context) {
-    final strokeColors = context.strokeColors;
     final materialColors = context.appColors;
     final lineSizes = context.lineSizes;
 
     return TextFormField(
       controller: widget.controller,
       focusNode: widget.focusNode,
-      obscureText: widget.obscureText ? _isObscured : false,
+      obscureText: widget.obscureText && _isObscured,
       keyboardType: widget.keyboardType,
       textInputAction: widget.textInputAction,
       onChanged: widget.onChanged,
@@ -115,6 +114,11 @@ class _AppTextFieldState extends State<AppTextField> {
       maxLines: widget.maxLines,
       maxLength: widget.maxLength,
       enabled: widget.enabled,
+      style: TextStyle(
+        color: widget.enabled
+            ? context.textFieldColors.input
+            : context.textFieldColors.disabled,
+      ),
       onFieldSubmitted: (value) {
         if (widget.textInputAction == TextInputAction.next) {
           FocusScope.of(context).nextFocus();
@@ -124,16 +128,17 @@ class _AppTextFieldState extends State<AppTextField> {
       },
       decoration: InputDecoration(
         hintText: widget.hintText,
-        hintStyle: TextStyle(
-          color: context.textFieldColors.hintColor, // Set the hint text color
-        ),
+        hintStyle: TextStyle(color: context.textFieldColors.hint),
         labelText: widget.labelText,
+        labelStyle: TextStyle(color: context.textFieldColors.label),
         prefixIcon: widget.prefixIcon,
         suffixIcon: widget.obscureText
             ? IconButton(
                 icon: Icon(
                   _isObscured ? Icons.visibility_off : Icons.visibility,
-                  color: materialColors.onSurface,
+                  color: widget.enabled
+                      ? materialColors.onSurface
+                      : context.textFieldColors.disabled,
                 ),
                 onPressed: () {
                   setState(() {
@@ -143,37 +148,41 @@ class _AppTextFieldState extends State<AppTextField> {
               )
             : widget.suffixIcon,
         contentPadding: widget.contentPadding,
-        fillColor: context.backgroundColors.primary,
+        fillColor: context.textFieldColors.fill,
         filled: widget.isFillColorEnabled,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.borderRadius),
           borderSide: BorderSide(
-            color: widget.borderColor ?? strokeColors.primary,
+            color: widget.borderColor ?? context.textFieldColors.enabledBorder,
           ),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.borderRadius),
           borderSide: BorderSide(
-            color: widget.borderColor ?? strokeColors.primary.withAlpha(50),
+            color: widget.borderColor ?? context.textFieldColors.enabledBorder,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.borderRadius),
           borderSide: BorderSide(
-            color: widget.borderColor ?? strokeColors.primary,
+            color: widget.borderColor ?? context.textFieldColors.focusedBorder,
             width: lineSizes.thin,
           ),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.borderRadius),
-          borderSide: BorderSide(color: materialColors.error),
+          borderSide: BorderSide(color: context.textFieldColors.errorBorder),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.borderRadius),
           borderSide: BorderSide(
-            color: materialColors.error,
+            color: context.textFieldColors.errorBorder,
             width: lineSizes.thin,
           ),
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(widget.borderRadius),
+          borderSide: BorderSide(color: context.textFieldColors.disabledBorder),
         ),
         counterText: '',
       ),

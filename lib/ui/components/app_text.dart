@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// A wrapper around [Text] and [RichText] that provides a consistent API for
+/// styling and layout within the application.
 class AppText extends StatelessWidget {
   const AppText(
     this.data, {
@@ -16,7 +18,6 @@ class AppText extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.softWrap,
-    this.locale,
     this.textDirection,
     this.semanticsLabel,
     this.textScaler,
@@ -45,45 +46,101 @@ class AppText extends StatelessWidget {
     this.selectable = false,
   });
 
+  /// The text to display.
   final String data;
 
   // text
+
+  /// The style to apply. Merged with other style properties.
   final TextStyle? style;
+
+  /// Custom color override.
   final Color? color;
+
+  /// Custom font size override.
   final double? fontSize;
+
+  /// Custom font weight override.
   final FontWeight? fontWeight;
+
+  /// Custom line height override.
   final double? height;
+
+  /// Custom letter spacing override.
   final double? letterSpacing;
+
+  /// Text alignment.
   final TextAlign? textAlign;
+
+  /// Maximum number of lines.
   final int? maxLines;
+
+  /// Text overflow behavior.
   final TextOverflow? overflow;
+
+  /// Whether the text should soft wrap.
   final bool? softWrap;
-  final Locale? locale;
+
+  /// The text direction.
   final TextDirection? textDirection;
+
+  /// The semantics label for accessibility.
   final String? semanticsLabel;
+
+  /// The text scaler.
   final TextScaler? textScaler;
 
   // leading / trailing
+
+  /// A widget to display before the text.
   final Widget? leading;
+
+  /// A widget to display after the text.
   final Widget? trailing;
+
+  /// An icon to display before the text. Used if [leading] is null.
   final IconData? leadingIcon;
+
+  /// An icon to display after the text. Used if [trailing] is null.
   final IconData? trailingIcon;
+
+  /// The size of the leading/trailing icons.
   final double? iconSize;
+
+  /// The color of the leading/trailing icons.
   final Color? iconColor;
+
+  /// The gap between the text and leading/trailing widgets. Defaults to 8.
   final double gap;
 
   // layout
+
+  /// Padding around the content.
   final EdgeInsetsGeometry padding;
+
+  /// Main axis size of the Row (if leading/trailing widgets are present).
   final MainAxisSize mainAxisSize;
+
+  /// Cross axis alignment of the Row (if leading/trailing widgets are present).
   final CrossAxisAlignment crossAxisAlignment;
 
   // interaction
+
+  /// Callback when tapped.
   final VoidCallback? onTap;
+
+  /// Callback when long pressed.
   final VoidCallback? onLongPress;
+
+  /// Border radius for the ink well (if tappable).
   final BorderRadius borderRadius;
+
+  /// Hit test behavior for the ink well.
   final HitTestBehavior hitTestBehavior;
 
   // selectable
+
+  /// Whether the text is selectable.
   final bool selectable;
 
   @override
@@ -137,7 +194,6 @@ class AppText extends StatelessWidget {
             maxLines: maxLines,
             overflow: overflow,
             softWrap: softWrap,
-            locale: locale,
             textDirection: textDirection,
             semanticsLabel: semanticsLabel,
             textScaler: textScaler,
@@ -145,7 +201,7 @@ class AppText extends StatelessWidget {
 
     final hasSides = leadingWidget != null || trailingWidget != null;
 
-    Widget content = hasSides
+    var content = hasSides
         ? Row(
             mainAxisSize: mainAxisSize,
             crossAxisAlignment: crossAxisAlignment,

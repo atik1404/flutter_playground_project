@@ -2,13 +2,16 @@ part of 'app_colors_aggregator.dart';
 
 final class DividerColor extends ThemeExtension<DividerColor>
     with ColorFieldsMixin<DividerColor> {
+  /// The color of the primary divider (e.g., between sections).
   final Color primary;
+
+  /// The color of the secondary divider (e.g., subtle separators).
   final Color secondary;
 
   DividerColor._({required this.primary, required this.secondary});
 
   @override
-  ThemeExtension<DividerColor> copyWith({
+  DividerColor copyWith({
     Color? primaryDividerColor,
     Color? secondaryDividerColor,
   }) {

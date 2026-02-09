@@ -2,9 +2,16 @@ part of 'app_colors_aggregator.dart';
 
 final class BorderColor extends ThemeExtension<BorderColor>
     with ColorFieldsMixin<BorderColor> {
+  /// The primary border color.
   final Color primary;
+
+  /// The secondary border color.
   final Color secondary;
+
+  /// The border color used to indicate error.
   final Color error;
+
+  /// The border color used when disabled.
   final Color disable;
 
   BorderColor._({
@@ -15,7 +22,7 @@ final class BorderColor extends ThemeExtension<BorderColor>
   });
 
   @override
-  ThemeExtension<BorderColor> copyWith({
+  BorderColor copyWith({
     Color? primaryStrokeColor,
     Color? secondaryStrokeColor,
     Color? errorStrokeColor,

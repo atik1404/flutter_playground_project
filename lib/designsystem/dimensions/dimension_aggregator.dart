@@ -66,7 +66,7 @@ final class DimensionAggregator extends ThemeExtension<DimensionAggregator> {
     icon: IconSize._standard,
     line: DividerSize._standard,
     shape: RadiusSize._standard,
-    spacing: SpacingSize._standard,
+    spacing: SpacingSize.standard,
     imageSize: ImageSize._standard,
   );
 }

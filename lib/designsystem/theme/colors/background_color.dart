@@ -2,8 +2,13 @@ part of 'app_colors_aggregator.dart';
 
 final class BackgroundColor extends ThemeExtension<BackgroundColor>
     with ColorFieldsMixin<BackgroundColor> {
+  /// The primary background color of the app.
   final Color primary;
+
+  /// The secondary background color of the app.
   final Color secondary;
+
+  /// The background color for items (e.g., list items, cards).
   final Color item;
 
   BackgroundColor._({
@@ -16,7 +21,7 @@ final class BackgroundColor extends ThemeExtension<BackgroundColor>
   List<Color> get colorFields => [primary, secondary, item];
 
   @override
-  ThemeExtension<BackgroundColor> copyWith({
+  BackgroundColor copyWith({
     Color? primaryBackgroundColor,
     Color? secondaryBackgroundColor,
     Color? introductionBackgroundColor,

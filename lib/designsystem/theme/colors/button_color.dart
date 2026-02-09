@@ -2,24 +2,55 @@ part of 'app_colors_aggregator.dart';
 
 final class ButtonColor extends ThemeExtension<ButtonColor>
     with ColorFieldsMixin<ButtonColor> {
+  /// The background color of the primary button.
   final Color primary;
+
+  /// The content color (text/icon) on the primary button.
   final Color onPrimary;
+
+  /// The background color of the secondary button.
   final Color secondary;
+
+  /// The content color (text/icon) on the secondary button.
   final Color onSecondary;
+
+  /// The background color of the primary container.
   final Color primaryContainer;
+
+  /// The content color (text/icon) on the primary container.
   final Color onPrimaryContainer;
+
+  /// The border color of the outline button.
+  final Color outline;
+
+  /// The background color of the outline button.
+  final Color outlineBackground;
+
+  /// The content color (text/icon) on the outline button.
+  final Color onOutline;
+
+  /// The color of the button when disabled.
   final Color disable;
+
+  /// The color of the button container when disabled.
   final Color disableContainer;
+
+  /// The color used to indicate error on buttons.
   final Color error;
+
+  /// The color used for error containers.
   final Color errorContainer;
 
-  ButtonColor._({
+  const ButtonColor._({
     required this.primary,
     required this.onPrimary,
     required this.secondary,
     required this.onSecondary,
     required this.primaryContainer,
     required this.onPrimaryContainer,
+    required this.outline,
+    required this.outlineBackground,
+    required this.onOutline,
     required this.disable,
     required this.disableContainer,
     required this.error,
@@ -27,13 +58,16 @@ final class ButtonColor extends ThemeExtension<ButtonColor>
   });
 
   @override
-  ThemeExtension<ButtonColor> copyWith({
+  ButtonColor copyWith({
     Color? primary,
     Color? onPrimary,
     Color? secondary,
     Color? onSecondary,
     Color? primaryContainer,
     Color? onPrimaryContainer,
+    Color? outline,
+    Color? outlineBackground,
+    Color? onOutline,
     Color? disable,
     Color? disableContainer,
     Color? error,
@@ -46,6 +80,9 @@ final class ButtonColor extends ThemeExtension<ButtonColor>
       onSecondary,
       primaryContainer,
       onPrimaryContainer,
+      outline,
+      outlineBackground,
+      onOutline,
       disable,
       disableContainer,
       error,
@@ -61,6 +98,9 @@ final class ButtonColor extends ThemeExtension<ButtonColor>
     onSecondary,
     primaryContainer,
     onPrimaryContainer,
+    outline,
+    outlineBackground,
+    onOutline,
     disable,
     disableContainer,
     error,
@@ -76,10 +116,13 @@ final class ButtonColor extends ThemeExtension<ButtonColor>
       onSecondary: colors[3],
       primaryContainer: colors[4],
       onPrimaryContainer: colors[5],
-      disable: colors[6],
-      disableContainer: colors[7],
-      error: colors[8],
-      errorContainer: colors[9],
+      outline: colors[6],
+      outlineBackground: colors[7],
+      onOutline: colors[8],
+      disable: colors[9],
+      disableContainer: colors[10],
+      error: colors[11],
+      errorContainer: colors[12],
     );
   }
 
@@ -90,6 +133,9 @@ final class ButtonColor extends ThemeExtension<ButtonColor>
     onSecondary: ColorPallet.white,
     primaryContainer: ColorPallet.primary.shade500,
     onPrimaryContainer: ColorPallet.white,
+    outline: ColorPallet.neutral.shade400,
+    outlineBackground: ColorPallet.transparent,
+    onOutline: ColorPallet.primary.shade500,
     disable: ColorPallet.primary.shade100,
     disableContainer: ColorPallet.neutral.shade600,
     error: ColorPallet.error.shade500,
@@ -103,6 +149,9 @@ final class ButtonColor extends ThemeExtension<ButtonColor>
     onSecondary: ColorPallet.white,
     primaryContainer: ColorPallet.primary.shade500,
     onPrimaryContainer: ColorPallet.white,
+    outline: ColorPallet.neutral.shade600,
+    outlineBackground: ColorPallet.transparent,
+    onOutline: ColorPallet.white,
     disable: ColorPallet.primary.shade100,
     disableContainer: ColorPallet.neutral.shade600,
     error: ColorPallet.error.shade500,

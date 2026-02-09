@@ -2,9 +2,16 @@ part of 'app_colors_aggregator.dart';
 
 final class AppBarColor extends ThemeExtension<AppBarColor>
     with ColorFieldsMixin<AppBarColor> {
+  /// The color of the primary container in the app bar.
   final Color primaryContainer;
+
+  /// The content color (text/icon) on the primary container.
   final Color onPrimaryContainer;
+
+  /// The color of the secondary container in the app bar.
   final Color secondaryContainer;
+
+  /// The content color (text/icon) on the secondary container.
   final Color onSecondaryContainer;
 
   AppBarColor._({
@@ -23,7 +30,7 @@ final class AppBarColor extends ThemeExtension<AppBarColor>
   ];
 
   @override
-  ThemeExtension<AppBarColor> copyWith({
+  AppBarColor copyWith({
     Color? primaryContainer,
     Color? onPrimaryContainer,
     Color? secondaryContainer,

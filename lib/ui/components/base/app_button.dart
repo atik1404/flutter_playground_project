@@ -1,21 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:playground_flutter_project/designsystem/extensions/theme_context_extension.dart';
 
+/// A customizable button widget that supports various styles and states.
+///
+/// [AppButton] wraps Flutter's button widgets (ElevatedButton, OutlinedButton, TextButton)
+/// providing a unified interface for styling and behavior across the app.
 class AppButton extends StatelessWidget {
+  /// The text label to display on the button.
   final String? label;
+
+  /// The icon to display. Required for [AppButtonType.icon].
   final IconData? icon;
+
+  /// An optional widget to display before the label.
   final Widget? leadingIcon;
+
+  /// An optional widget to display after the label.
   final Widget? trailingIcon;
+
+  /// callback when the button is pressed. If null, the button is disabled.
   final VoidCallback? onPressed;
+
+  /// The style type of the button (filled, outline, text, icon).
   final AppButtonType type;
+
+  /// Whether to show a loading indicator instead of the button content.
   final bool isLoading;
 
   // Sizing & Styling props
+
+  /// The size variant of the button.
   final AppButtonSize size;
+
+  /// Explicit width for the button.
   final double? width;
-  final double? maxWidth; // NEW: Caps the width
+
+  /// Maximum width for the button.
+  final double? maxWidth;
+
+  /// Explicit height for the button. Overrides [size.height] if provided.
   final double? height;
+
+  /// Custom background color. Falls back to theme defaults if null.
   final Color? backgroundColor;
+
+  /// Custom foreground color (text/icon). Falls back to theme defaults if null.
   final Color? foregroundColor;
+
+  /// Custom border radius. Defaults to 8.0.
   final BorderRadiusGeometry? borderRadius;
 
   const AppButton({
@@ -35,12 +67,13 @@ class AppButton extends StatelessWidget {
     this.foregroundColor,
     this.borderRadius,
   }) : assert(
-         type == AppButtonType.icon ? icon != null : true,
+         type != AppButtonType.icon || icon != null,
          'Icon data is required for Icon Button type',
        );
 
   // --- Factory Constructors ---
 
+  /// Creates a filled button (ElevatedButton style).
   const AppButton.filled({
     super.key,
     required String this.label,
@@ -58,6 +91,7 @@ class AppButton extends StatelessWidget {
   }) : type = AppButtonType.filled,
        icon = null;
 
+  /// Creates an outlined button (OutlinedButton style).
   const AppButton.outline({
     super.key,
     required String this.label,
@@ -75,6 +109,7 @@ class AppButton extends StatelessWidget {
   }) : type = AppButtonType.outline,
        icon = null;
 
+  /// Creates a text button (TextButton style).
   const AppButton.text({
     super.key,
     required String this.label,
@@ -92,6 +127,7 @@ class AppButton extends StatelessWidget {
   }) : type = AppButtonType.text,
        icon = null;
 
+  /// Creates an icon-only button.
   const AppButton.icon({
     super.key,
     required IconData this.icon,
@@ -146,7 +182,8 @@ class AppButton extends StatelessWidget {
   ) {
     // Common Style Logic
     final shape = RoundedRectangleBorder(
-      borderRadius: borderRadius ?? BorderRadius.circular(8),
+      borderRadius:
+          borderRadius ?? BorderRadius.circular(context.shapeRadius.sm),
     );
 
     Color? bg;
@@ -155,28 +192,34 @@ class AppButton extends StatelessWidget {
 
     switch (type) {
       case AppButtonType.filled:
-        bg = backgroundColor ?? Theme.of(context).primaryColor;
-        fg = foregroundColor ?? Theme.of(context).colorScheme.onPrimary;
+        bg = backgroundColor ?? context.buttonColors.primary;
+        fg = foregroundColor ?? context.buttonColors.onPrimary;
         break;
       case AppButtonType.outline:
         bg = Colors.transparent;
-        fg = foregroundColor ?? Theme.of(context).primaryColor;
-        side = BorderSide(color: fg);
+        fg = foregroundColor ?? context.buttonColors.onOutline;
+        side = BorderSide(color: context.buttonColors.outline);
         break;
       case AppButtonType.text:
       case AppButtonType.icon:
         bg = Colors.transparent;
-        fg = foregroundColor ?? Theme.of(context).primaryColor;
+        fg = foregroundColor ?? context.appColors.primary;
         break;
     }
 
     final style = ButtonStyle(
       backgroundColor: WidgetStateProperty.resolveWith((states) {
-        if (states.contains(WidgetState.disabled)) return Colors.grey.shade300;
+        if (states.contains(WidgetState.disabled)) {
+          return context.buttonColors.disableContainer;
+        }
+        
         return bg;
       }),
       foregroundColor: WidgetStateProperty.resolveWith((states) {
-        if (states.contains(WidgetState.disabled)) return Colors.grey.shade500;
+        if (states.contains(WidgetState.disabled)) {
+          return context.buttonColors.disable;
+        }
+       
         return fg;
       }),
       side: WidgetStateProperty.all(side),
@@ -203,14 +246,15 @@ class AppButton extends StatelessWidget {
   Widget _buildContent(BuildContext context, double effectiveHeight) {
     if (isLoading) {
       final loaderSize = effectiveHeight * 0.5;
+      
       return SizedBox(
         height: loaderSize,
         width: loaderSize,
         child: CircularProgressIndicator(
           strokeWidth: 2.5,
           color: type == AppButtonType.filled
-              ? (foregroundColor ?? Theme.of(context).colorScheme.onPrimary)
-              : (foregroundColor ?? Theme.of(context).primaryColor),
+              ? (foregroundColor ?? context.buttonColors.onPrimary)
+              : (foregroundColor ?? context.appColors.primary),
         ),
       );
     }
@@ -256,14 +300,17 @@ class AppButton extends StatelessWidget {
 
   Color currentColor(BuildContext context) {
     if (type == AppButtonType.filled) {
-      return foregroundColor ?? Theme.of(context).colorScheme.onPrimary;
+      return foregroundColor ?? context.buttonColors.onPrimary;
     }
-    return foregroundColor ?? Theme.of(context).primaryColor;
+    
+    return foregroundColor ?? context.appColors.primary;
   }
 }
 
+/// Defines the visual style of the button.
 enum AppButtonType { filled, outline, text, icon }
 
+/// Defines the size variants of the button.
 enum AppButtonSize {
   small(32, 12, 12),
   medium(48, 24, 16),
