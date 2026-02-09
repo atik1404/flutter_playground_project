@@ -54,18 +54,18 @@ final class TextFieldColor extends ThemeExtension<TextFieldColor>
   }
 
   static final _lightThemeColor = TextFieldColor._(
-    fillColor: ColorPallet.neutral100,
-    hintColor: ColorPallet.neutral300,
-    focusedBorderColor: ColorPallet.neutral300,
-    disableBorderColor: ColorPallet.neutral200,
-    error: ColorPallet.error400,
+    fillColor: ColorPallet.neutral.shade100,
+    hintColor: ColorPallet.neutral.shade300,
+    focusedBorderColor: ColorPallet.neutral.shade300,
+    disableBorderColor: ColorPallet.neutral.shade200,
+    error: ColorPallet.error.shade400,
   );
 
   static final _darkThemeColor = TextFieldColor._(
-    fillColor: ColorPallet.neutral100,
-    hintColor: ColorPallet.neutral300,
-    focusedBorderColor: ColorPallet.neutral300,
-    disableBorderColor: ColorPallet.neutral200,
-    error: ColorPallet.error400,
+    fillColor: ColorPallet.neutral.shade100,
+    hintColor: ColorPallet.neutral.shade300,
+    focusedBorderColor: ColorPallet.neutral.shade300,
+    disableBorderColor: ColorPallet.neutral.shade200,
+    error: ColorPallet.error.shade400 ,
   );
 }

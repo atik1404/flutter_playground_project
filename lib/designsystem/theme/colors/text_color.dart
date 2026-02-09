@@ -46,18 +46,18 @@ final class TextColor extends ThemeExtension<TextColor>
   }
 
   static final _lightThemeColor = TextColor._(
-    primary: ColorPallet.neutral950,
-    secondary: ColorPallet.neutral600,
-    tertiary: ColorPallet.neutral300,
+    primary: ColorPallet.neutral.shade900,
+    secondary: ColorPallet.neutral.shade600,
+    tertiary: ColorPallet.neutral.shade300,
     white: ColorPallet.white,
-    error: ColorPallet.error500,
+    error: ColorPallet.error.shade500,
   );
 
   static final _darkThemeColor = TextColor._(
-    primary: ColorPallet.neutral950,
-    secondary: ColorPallet.neutral600,
-    tertiary: ColorPallet.neutral300,
+    primary: ColorPallet.neutral.shade900,
+    secondary: ColorPallet.neutral.shade600,
+    tertiary: ColorPallet.neutral.shade300,
     white: ColorPallet.white,
-    error: ColorPallet.error500,
+    error: ColorPallet.error.shade500,
   );
 }

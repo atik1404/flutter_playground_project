@@ -1,6 +1,5 @@
 part of 'app_colors_aggregator.dart';
 
-
 class AppColor extends ThemeExtension<AppColor>
     with ColorFieldsMixin<AppColor> {
   final Color primary;
@@ -158,40 +157,40 @@ class AppColor extends ThemeExtension<AppColor>
   }
 
   static final _lightThemeColor = AppColor._(
-    primary: ColorPallet.primary500,
+    primary: ColorPallet.primary.shade500,
     onPrimary: ColorPallet.white,
-    primaryContainer: ColorPallet.primary300,
+    primaryContainer: ColorPallet.primary.shade300,
     onPrimaryContainer: ColorPallet.black,
-    secondary: ColorPallet.secondary500,
+    secondary: ColorPallet.secondary.shade500,
     onSecondary: ColorPallet.white,
-    secondaryContainer: ColorPallet.secondary300,
+    secondaryContainer: ColorPallet.secondary.shade300,
     onSecondaryContainer: ColorPallet.black,
-    tertiary: ColorPallet.neutral100,
+    tertiary: ColorPallet.neutral.shade100,
     onTertiary: ColorPallet.white,
-    surface: ColorPallet.neutral100,
+    surface: ColorPallet.neutral.shade100,
     onSurface: ColorPallet.black,
-    error: ColorPallet.error500,
+    error: ColorPallet.error.shade500,
     onError: ColorPallet.white,
     inverseSurface: ColorPallet.white,
-    onInverseSurface: ColorPallet.neutral700,
+    onInverseSurface: ColorPallet.neutral.shade700,
   );
 
   static final _darkThemeColor = AppColor._(
-    primary: ColorPallet.primary500,
+    primary: ColorPallet.primary.shade500,
     onPrimary: ColorPallet.white,
-    primaryContainer: ColorPallet.primary300,
+    primaryContainer: ColorPallet.primary.shade300,
     onPrimaryContainer: ColorPallet.black,
-    secondary: ColorPallet.secondary500,
+    secondary: ColorPallet.secondary.shade500,
     onSecondary: ColorPallet.white,
-    secondaryContainer: ColorPallet.secondary300,
+    secondaryContainer: ColorPallet.secondary.shade300,
     onSecondaryContainer: ColorPallet.black,
-    tertiary: ColorPallet.neutral100,
+    tertiary: ColorPallet.neutral.shade100,
     onTertiary: ColorPallet.white,
-    surface: ColorPallet.neutral100,
+    surface: ColorPallet.neutral.shade100,
     onSurface: ColorPallet.black,
-    error: ColorPallet.error500,
+    error: ColorPallet.error.shade500,
     onError: ColorPallet.white,
     inverseSurface: ColorPallet.white,
-    onInverseSurface: ColorPallet.neutral700,
+    onInverseSurface: ColorPallet.neutral.shade700,
   );
 }

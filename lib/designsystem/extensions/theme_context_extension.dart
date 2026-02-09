@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../dimensions/dimension_aggregator.dart';
-import '../theme/colors/app_colors_aggregator.dart';
-import '../typo/app_typography.dart';
+import 'package:playground_flutter_project/designsystem/dimensions/dimension_aggregator.dart';
+import 'package:playground_flutter_project/designsystem/theme/colors/app_colors_aggregator.dart';
+import 'package:playground_flutter_project/designsystem/typo/app_typography.dart';
 
 part 'theme_data_extension.dart';
 
@@ -14,13 +14,12 @@ extension ThemeContextExtension on BuildContext {
   BackgroundColor get backgroundColors => _colorTokens.backgroundColor;
   ButtonColor get buttonColors => _colorTokens.buttonColor;
   AppBarColor get appBarColors => _colorTokens.appBarColor;
-  StrokeColor get strokeColors => _colorTokens.strokeColor;
+  BorderColor get strokeColors => _colorTokens.strokeColor;
   AppTypography get typography => Theme.of(this)._typography;
   DimensionAggregator get _dimensions => Theme.of(this)._dimensions;
   IconSize get iconSizes => _dimensions.icon;
   ImageSize get imageSizes => _dimensions.imageSize;
   DividerSize get lineSizes => _dimensions.line;
-  ShapeRadius get shapeRadius => _dimensions.shape;
+  RadiusSize get shapeRadius => _dimensions.shape;
   SpacingSize get spacingSizes => _dimensions.spacing;
-  WidgetSize get widgetSizes => _dimensions.widget;
 }

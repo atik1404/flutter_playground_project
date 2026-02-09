@@ -38,14 +38,14 @@ final class BackgroundColor extends ThemeExtension<BackgroundColor>
   }
 
   static final _lightThemeColor = BackgroundColor._(
-    primary: ColorPallet.neutral50,
-    secondary: ColorPallet.neutral100,
-    item: ColorPallet.neutral50,
+    primary: ColorPallet.neutral.shade500,
+    secondary: ColorPallet.neutral.shade100,
+    item: ColorPallet.neutral.shade50,
   );
 
   static final _darkThemeColor = BackgroundColor._(
-    primary: ColorPallet.neutral800,
-    secondary: ColorPallet.neutral700,
-    item: ColorPallet.neutral800,
+    primary: ColorPallet.neutral.shade900,
+    secondary: ColorPallet.neutral.shade700,
+    item: ColorPallet.neutral.shade800,
   );
 }

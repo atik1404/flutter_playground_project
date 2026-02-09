@@ -84,28 +84,28 @@ final class ButtonColor extends ThemeExtension<ButtonColor>
   }
 
   static final _lightThemeColor = ButtonColor._(
-    primary: ColorPallet.primary600,
+    primary: ColorPallet.primary.shade500,
     onPrimary: ColorPallet.white,
-    secondary: ColorPallet.secondary500,
+    secondary: ColorPallet.secondary.shade500,
     onSecondary: ColorPallet.white,
-    primaryContainer: ColorPallet.primary500,
+    primaryContainer: ColorPallet.primary.shade500,
     onPrimaryContainer: ColorPallet.white,
-    disable: ColorPallet.primary100,
-    disableContainer: ColorPallet.neutral600,
-    error: ColorPallet.error500,
-    errorContainer: ColorPallet.error100,
+    disable: ColorPallet.primary.shade100,
+    disableContainer: ColorPallet.neutral.shade600,
+    error: ColorPallet.error.shade500,
+    errorContainer: ColorPallet.error.shade100,
   );
 
   static final _darkThemeColor = ButtonColor._(
-    primary: ColorPallet.primary600,
+    primary: ColorPallet.primary.shade600,
     onPrimary: ColorPallet.white,
-    secondary: ColorPallet.secondary500,
+    secondary: ColorPallet.secondary.shade500,
     onSecondary: ColorPallet.white,
-    primaryContainer: ColorPallet.primary500,
+    primaryContainer: ColorPallet.primary.shade500,
     onPrimaryContainer: ColorPallet.white,
-    disable: ColorPallet.primary100,
-    disableContainer: ColorPallet.neutral600,
-    error: ColorPallet.error500,
-    errorContainer: ColorPallet.error100,
+    disable: ColorPallet.primary.shade100,
+    disableContainer: ColorPallet.neutral.shade600,
+    error: ColorPallet.error.shade500,
+    errorContainer: ColorPallet.error.shade100,
   );
 }

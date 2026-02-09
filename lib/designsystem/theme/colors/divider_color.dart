@@ -24,12 +24,12 @@ final class DividerColor extends ThemeExtension<DividerColor>
   }
 
   static final _lightThemeColor = DividerColor._(
-    primary: ColorPallet.neutral300,
-    secondary: ColorPallet.neutral200,
+    primary: ColorPallet.neutral.shade300,
+    secondary: ColorPallet.neutral.shade200,
   );
 
   static final _darkThemeColor = DividerColor._(
-    primary: ColorPallet.neutral300,
-    secondary: ColorPallet.neutral200,
+    primary: ColorPallet.neutral.shade300,
+    secondary: ColorPallet.neutral.shade200,
   );
 }

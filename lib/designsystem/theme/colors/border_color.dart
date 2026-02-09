@@ -1,13 +1,13 @@
 part of 'app_colors_aggregator.dart';
 
-final class StrokeColor extends ThemeExtension<StrokeColor>
-    with ColorFieldsMixin<StrokeColor> {
+final class BorderColor extends ThemeExtension<BorderColor>
+    with ColorFieldsMixin<BorderColor> {
   final Color primary;
   final Color secondary;
   final Color error;
   final Color disable;
 
-  StrokeColor._({
+  BorderColor._({
     required this.primary,
     required this.secondary,
     required this.error,
@@ -15,7 +15,7 @@ final class StrokeColor extends ThemeExtension<StrokeColor>
   });
 
   @override
-  ThemeExtension<StrokeColor> copyWith({
+  ThemeExtension<BorderColor> copyWith({
     Color? primaryStrokeColor,
     Color? secondaryStrokeColor,
     Color? errorStrokeColor,
@@ -33,8 +33,8 @@ final class StrokeColor extends ThemeExtension<StrokeColor>
   List<Color> get colorFields => [primary, secondary, error, disable];
 
   @override
-  StrokeColor createInstance(List<Color> colors) {
-    return StrokeColor._(
+  BorderColor createInstance(List<Color> colors) {
+    return BorderColor._(
       primary: colors[0],
       secondary: colors[1],
       error: colors[2],
@@ -42,17 +42,17 @@ final class StrokeColor extends ThemeExtension<StrokeColor>
     );
   }
 
-  static final _lightThemeColor = StrokeColor._(
-    primary: ColorPallet.primary500,
-    secondary: ColorPallet.secondary500,
-    error: ColorPallet.error500,
-    disable: ColorPallet.neutral300,
+  static final _lightThemeColor = BorderColor._(
+    primary: ColorPallet.primary.shade500,
+    secondary: ColorPallet.secondary.shade500,
+    error: ColorPallet.error.shade500,
+    disable: ColorPallet.neutral.shade300,
   );
 
-  static final _darkThemeColor = StrokeColor._(
-    primary: ColorPallet.primary500,
-    secondary: ColorPallet.secondary500,
-    error: ColorPallet.error500,
-    disable: ColorPallet.neutral300,
+  static final _darkThemeColor = BorderColor._(
+    primary: ColorPallet.primary.shade500,
+    secondary: ColorPallet.secondary.shade500,
+    error: ColorPallet.error.shade500,
+    disable: ColorPallet.neutral.shade300,
   );
 }

@@ -16,11 +16,11 @@ final class AppBarColor extends ThemeExtension<AppBarColor>
 
   @override
   List<Color> get colorFields => [
-        primaryContainer,
-        onPrimaryContainer,
-        secondaryContainer,
-        onSecondaryContainer,
-      ];
+    primaryContainer,
+    onPrimaryContainer,
+    secondaryContainer,
+    onSecondaryContainer,
+  ];
 
   @override
   ThemeExtension<AppBarColor> copyWith({
@@ -48,16 +48,16 @@ final class AppBarColor extends ThemeExtension<AppBarColor>
   }
 
   static final _lightThemeColor = AppBarColor._(
-    primaryContainer: ColorPallet.primary500,
+    primaryContainer: ColorPallet.primary.shade500,
     onPrimaryContainer: ColorPallet.white,
-    secondaryContainer: ColorPallet.secondary500,
+    secondaryContainer: ColorPallet.secondary.shade500,
     onSecondaryContainer: ColorPallet.black,
   );
 
   static final _darkThemeColor = AppBarColor._(
-    primaryContainer: ColorPallet.primary500,
+    primaryContainer: ColorPallet.primary.shade500,
     onPrimaryContainer: ColorPallet.white,
-    secondaryContainer: ColorPallet.secondary500,
+    secondaryContainer: ColorPallet.secondary.shade500,
     onSecondaryContainer: ColorPallet.black,
   );
 }

@@ -16,7 +16,7 @@ final class AppColorsAggregator extends ThemeExtension<AppColorsAggregator> {
   final BackgroundColor backgroundColor;
   final ButtonColor buttonColor;
   final DividerColor dividerColor;
-  final StrokeColor strokeColor;
+  final BorderColor strokeColor;
   final TextColor textColor;
   final TextFieldColor textFieldColor;
   final AppColor appColor;
@@ -37,7 +37,7 @@ final class AppColorsAggregator extends ThemeExtension<AppColorsAggregator> {
     backgroundColor: BackgroundColor._lightThemeColor,
     buttonColor: ButtonColor._lightThemeColor,
     dividerColor: DividerColor._lightThemeColor,
-    strokeColor: StrokeColor._lightThemeColor,
+    strokeColor: BorderColor._lightThemeColor,
     textColor: TextColor._lightThemeColor,
     textFieldColor: TextFieldColor._lightThemeColor,
     appColor: AppColor._lightThemeColor,
@@ -48,7 +48,7 @@ final class AppColorsAggregator extends ThemeExtension<AppColorsAggregator> {
     backgroundColor: BackgroundColor._darkThemeColor,
     buttonColor: ButtonColor._darkThemeColor,
     dividerColor: DividerColor._darkThemeColor,
-    strokeColor: StrokeColor._darkThemeColor,
+    strokeColor: BorderColor._darkThemeColor,
     textColor: TextColor._darkThemeColor,
     textFieldColor: TextFieldColor._darkThemeColor,
     appColor: AppColor._darkThemeColor,
@@ -60,7 +60,7 @@ final class AppColorsAggregator extends ThemeExtension<AppColorsAggregator> {
     BackgroundColor? backgroundColor,
     ButtonColor? buttonColor,
     DividerColor? dividerColor,
-    StrokeColor? strokeColor,
+    BorderColor? strokeColor,
     TextColor? textColor,
     TextFieldColor? textFieldColor,
     AppColor? appColor,
