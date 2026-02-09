@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:playground_flutter_project/core/router/app_router.dart';
@@ -21,7 +19,7 @@ class MyApp extends StatelessWidget {
       builder: (_, child) {
         return SafeArea(
           top: false,
-          bottom: Platform.isAndroid,
+          bottom: false,
           child: MaterialApp.router(
             theme: AppThemeData.light(),
             darkTheme: AppThemeData.dark(),
