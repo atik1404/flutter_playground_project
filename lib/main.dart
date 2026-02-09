@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:playground_flutter_project/feature/splash_screen.dart';
+import 'package:playground_flutter_project/core/router/app_router.dart';
+import 'package:playground_flutter_project/designsystem/theme/app_theme_data.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +19,16 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return const MaterialApp(title: 'Flutter Demo', home: EntryScreen());
+        return SafeArea(
+          top: false,
+          bottom: Platform.isAndroid,
+          child: MaterialApp.router(
+            theme: AppThemeData.light(),
+            darkTheme: AppThemeData.dark(),
+            debugShowCheckedModeBanner: false,
+            routerConfig: router,
+          ),
+        );
       },
     );
   }

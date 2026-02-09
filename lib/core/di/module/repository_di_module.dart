@@ -5,10 +5,8 @@ import 'package:playground_flutter_project/domain/repositories/auth_repository.d
 Future<void> registerRepositoryModule() async {
   di.registerLazySingleton<AuthRepository>(
     () => AuthRepoImpl(
-      sharedPrefs: di.get(),
       authApiServices: di.get(),
       loginApiMapper: di.get(),
-      profileApiMapper: di.get(),
     ),
   );
 
