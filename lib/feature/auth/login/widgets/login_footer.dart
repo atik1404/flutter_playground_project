@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:logging/logging.dart';
-import 'package:playground_flutter_project/common/utils/logger_utils.dart';
+import 'package:playground_flutter_project/common/logger/app_logger.dart';
 import 'package:playground_flutter_project/designsystem/extensions/theme_context_extension.dart';
 import 'package:playground_flutter_project/designsystem/resources/app_icons.dart';
 import 'package:playground_flutter_project/designsystem/resources/app_strings.dart';
@@ -31,7 +30,7 @@ class LoginFooter extends StatelessWidget {
             height: iconSize.sm,
           ),
           onPressed: () {
-            appLog.log(Level.ALL, "Help button pressed");
+            AppLogger.log("Help button pressed");
           },
         ),
         SpacerBox(height: spacing.xxl),

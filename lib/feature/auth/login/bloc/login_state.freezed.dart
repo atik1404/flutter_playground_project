@@ -1,0 +1,292 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'login_state.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+// dart format off
+T _$identity<T>(T value) => value;
+/// @nodoc
+mixin _$LoginState {
+
+ FormzSubmissionStatus get status; Email get email; Password get password; bool get isValid; bool get obscurePassword; String get apiErrorMsg; String? get emailValidationError; String? get passwordValidationError;
+/// Create a copy of LoginState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$LoginStateCopyWith<LoginState> get copyWith => _$LoginStateCopyWithImpl<LoginState>(this as LoginState, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginState&&(identical(other.status, status) || other.status == status)&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&(identical(other.isValid, isValid) || other.isValid == isValid)&&(identical(other.obscurePassword, obscurePassword) || other.obscurePassword == obscurePassword)&&(identical(other.apiErrorMsg, apiErrorMsg) || other.apiErrorMsg == apiErrorMsg)&&(identical(other.emailValidationError, emailValidationError) || other.emailValidationError == emailValidationError)&&(identical(other.passwordValidationError, passwordValidationError) || other.passwordValidationError == passwordValidationError));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,status,email,password,isValid,obscurePassword,apiErrorMsg,emailValidationError,passwordValidationError);
+
+@override
+String toString() {
+  return 'LoginState(status: $status, email: $email, password: $password, isValid: $isValid, obscurePassword: $obscurePassword, apiErrorMsg: $apiErrorMsg, emailValidationError: $emailValidationError, passwordValidationError: $passwordValidationError)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $LoginStateCopyWith<$Res>  {
+  factory $LoginStateCopyWith(LoginState value, $Res Function(LoginState) _then) = _$LoginStateCopyWithImpl;
+@useResult
+$Res call({
+ FormzSubmissionStatus status, Email email, Password password, bool isValid, bool obscurePassword, String apiErrorMsg, String? emailValidationError, String? passwordValidationError
+});
+
+
+
+
+}
+/// @nodoc
+class _$LoginStateCopyWithImpl<$Res>
+    implements $LoginStateCopyWith<$Res> {
+  _$LoginStateCopyWithImpl(this._self, this._then);
+
+  final LoginState _self;
+  final $Res Function(LoginState) _then;
+
+/// Create a copy of LoginState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? email = null,Object? password = null,Object? isValid = null,Object? obscurePassword = null,Object? apiErrorMsg = null,Object? emailValidationError = freezed,Object? passwordValidationError = freezed,}) {
+  return _then(_self.copyWith(
+status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as FormzSubmissionStatus,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as Email,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
+as Password,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
+as bool,obscurePassword: null == obscurePassword ? _self.obscurePassword : obscurePassword // ignore: cast_nullable_to_non_nullable
+as bool,apiErrorMsg: null == apiErrorMsg ? _self.apiErrorMsg : apiErrorMsg // ignore: cast_nullable_to_non_nullable
+as String,emailValidationError: freezed == emailValidationError ? _self.emailValidationError : emailValidationError // ignore: cast_nullable_to_non_nullable
+as String?,passwordValidationError: freezed == passwordValidationError ? _self.passwordValidationError : passwordValidationError // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [LoginState].
+extension LoginStatePatterns on LoginState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _LoginState value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _LoginState() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _LoginState value)  $default,){
+final _that = this;
+switch (_that) {
+case _LoginState():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _LoginState value)?  $default,){
+final _that = this;
+switch (_that) {
+case _LoginState() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( FormzSubmissionStatus status,  Email email,  Password password,  bool isValid,  bool obscurePassword,  String apiErrorMsg,  String? emailValidationError,  String? passwordValidationError)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _LoginState() when $default != null:
+return $default(_that.status,_that.email,_that.password,_that.isValid,_that.obscurePassword,_that.apiErrorMsg,_that.emailValidationError,_that.passwordValidationError);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( FormzSubmissionStatus status,  Email email,  Password password,  bool isValid,  bool obscurePassword,  String apiErrorMsg,  String? emailValidationError,  String? passwordValidationError)  $default,) {final _that = this;
+switch (_that) {
+case _LoginState():
+return $default(_that.status,_that.email,_that.password,_that.isValid,_that.obscurePassword,_that.apiErrorMsg,_that.emailValidationError,_that.passwordValidationError);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( FormzSubmissionStatus status,  Email email,  Password password,  bool isValid,  bool obscurePassword,  String apiErrorMsg,  String? emailValidationError,  String? passwordValidationError)?  $default,) {final _that = this;
+switch (_that) {
+case _LoginState() when $default != null:
+return $default(_that.status,_that.email,_that.password,_that.isValid,_that.obscurePassword,_that.apiErrorMsg,_that.emailValidationError,_that.passwordValidationError);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class _LoginState implements LoginState {
+  const _LoginState({this.status = FormzSubmissionStatus.initial, this.email = const Email.pure(), this.password = const Password.pure(), this.isValid = false, this.obscurePassword = true, this.apiErrorMsg = '', this.emailValidationError, this.passwordValidationError});
+  
+
+@override@JsonKey() final  FormzSubmissionStatus status;
+@override@JsonKey() final  Email email;
+@override@JsonKey() final  Password password;
+@override@JsonKey() final  bool isValid;
+@override@JsonKey() final  bool obscurePassword;
+@override@JsonKey() final  String apiErrorMsg;
+@override final  String? emailValidationError;
+@override final  String? passwordValidationError;
+
+/// Create a copy of LoginState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$LoginStateCopyWith<_LoginState> get copyWith => __$LoginStateCopyWithImpl<_LoginState>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LoginState&&(identical(other.status, status) || other.status == status)&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&(identical(other.isValid, isValid) || other.isValid == isValid)&&(identical(other.obscurePassword, obscurePassword) || other.obscurePassword == obscurePassword)&&(identical(other.apiErrorMsg, apiErrorMsg) || other.apiErrorMsg == apiErrorMsg)&&(identical(other.emailValidationError, emailValidationError) || other.emailValidationError == emailValidationError)&&(identical(other.passwordValidationError, passwordValidationError) || other.passwordValidationError == passwordValidationError));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,status,email,password,isValid,obscurePassword,apiErrorMsg,emailValidationError,passwordValidationError);
+
+@override
+String toString() {
+  return 'LoginState(status: $status, email: $email, password: $password, isValid: $isValid, obscurePassword: $obscurePassword, apiErrorMsg: $apiErrorMsg, emailValidationError: $emailValidationError, passwordValidationError: $passwordValidationError)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$LoginStateCopyWith<$Res> implements $LoginStateCopyWith<$Res> {
+  factory _$LoginStateCopyWith(_LoginState value, $Res Function(_LoginState) _then) = __$LoginStateCopyWithImpl;
+@override @useResult
+$Res call({
+ FormzSubmissionStatus status, Email email, Password password, bool isValid, bool obscurePassword, String apiErrorMsg, String? emailValidationError, String? passwordValidationError
+});
+
+
+
+
+}
+/// @nodoc
+class __$LoginStateCopyWithImpl<$Res>
+    implements _$LoginStateCopyWith<$Res> {
+  __$LoginStateCopyWithImpl(this._self, this._then);
+
+  final _LoginState _self;
+  final $Res Function(_LoginState) _then;
+
+/// Create a copy of LoginState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? email = null,Object? password = null,Object? isValid = null,Object? obscurePassword = null,Object? apiErrorMsg = null,Object? emailValidationError = freezed,Object? passwordValidationError = freezed,}) {
+  return _then(_LoginState(
+status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
+as FormzSubmissionStatus,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as Email,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
+as Password,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
+as bool,obscurePassword: null == obscurePassword ? _self.obscurePassword : obscurePassword // ignore: cast_nullable_to_non_nullable
+as bool,apiErrorMsg: null == apiErrorMsg ? _self.apiErrorMsg : apiErrorMsg // ignore: cast_nullable_to_non_nullable
+as String,emailValidationError: freezed == emailValidationError ? _self.emailValidationError : emailValidationError // ignore: cast_nullable_to_non_nullable
+as String?,passwordValidationError: freezed == passwordValidationError ? _self.passwordValidationError : passwordValidationError // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+// dart format on

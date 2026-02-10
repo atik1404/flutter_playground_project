@@ -1,5 +1,5 @@
 import 'package:flutter/services.dart';
-import 'package:playground_flutter_project/common/utils/logger_utils.dart';
+import 'package:playground_flutter_project/common/logger/app_logger.dart';
 
 final class FlavorConfig {
   static final FlavorConfig _instance = FlavorConfig._internal();
@@ -16,7 +16,7 @@ final class FlavorConfig {
           .invokeMethod<String>("getFlavor");
       _appFlavor = flavorString == "production" ? Flavor.production : Flavor.development;
     } catch (e) {
-      appLog.shout("Error fetching app flavor: $e");
+      AppLogger.log("Error fetching app flavor: $e");
     }
   }
 

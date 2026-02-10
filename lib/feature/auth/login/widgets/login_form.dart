@@ -1,71 +1,122 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:formz/formz.dart';
+import 'package:playground_flutter_project/common/logger/app_logger.dart';
+import 'package:playground_flutter_project/common/logger/app_toast.dart';
 import 'package:playground_flutter_project/designsystem/extensions/theme_context_extension.dart';
 import 'package:playground_flutter_project/designsystem/resources/app_icons.dart';
 import 'package:playground_flutter_project/designsystem/resources/app_strings.dart';
-import 'package:playground_flutter_project/ui/components/app_text.dart';
+import 'package:playground_flutter_project/feature/auth/login/bloc/login_bloc.dart';
+import 'package:playground_flutter_project/feature/auth/login/bloc/login_event.dart';
+import 'package:playground_flutter_project/feature/auth/login/bloc/login_state.dart';
 import 'package:playground_flutter_project/ui/components/button/app_filled_button.dart';
 import 'package:playground_flutter_project/ui/components/spacer_box.dart';
 import 'package:playground_flutter_project/ui/components/textfield/app_filled_text_field.dart';
 
-class LoginForm extends StatefulWidget {
+class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
-
-  @override
-  State<LoginForm> createState() => _LoginFormState();
-}
-
-class _LoginFormState extends State<LoginForm> {
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-  bool _obscurePassword = true;
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     final spacing = context.spacingSizes;
-    final appColors = context.appColors;
-    final typography = context.typography;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        AppText(AppStrings.labelEmailAddress, style: typography.bodySmallLight),
-        SpacerBox(height: spacing.sm),
-        AppFilledTextField(
-          controller: _emailController,
+    return BlocListener<LoginBloc, LoginState>(
+      listener: (context, state) {
+        if (state.status.isFailure) {
+          AppToast.toast(
+            message: state.apiErrorMsg,
+            toastType: ToastType.error,
+          );
+        }
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _EmailInput(),
+          SpacerBox(height: spacing.lg),
+          _PasswordInput(),
+          SpacerBox(height: spacing.xl),
+          _LoginButton(),
+        ],
+      ),
+    );
+  }
+}
+
+class _EmailInput extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<LoginBloc, LoginState>(
+      buildWhen: (previous, current) =>
+          previous.email != current.email ||
+          previous.emailValidationError != current.emailValidationError,
+      builder: (context, state) {
+        return AppFilledTextField(
+          labelText: AppStrings.labelEmailAddress,
+          errorText: state.emailValidationError,
+          onChanged: (email) =>
+              context.read<LoginBloc>().add(LoginEvent.emailChanged(email)),
           hintText: AppStrings.hintEmailAddress,
           suffixIcon: SvgPicture.asset(AppIcons.icEmail),
           keyboardType: TextInputType.emailAddress,
-        ),
-        SpacerBox(height: spacing.lg),
-        AppText(AppStrings.labelPassword, style: typography.bodySmallLight),
-        SpacerBox(height: spacing.sm),
-        AppFilledTextField(
-          controller: _passwordController,
+        );
+      },
+    );
+  }
+}
+
+class _PasswordInput extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<LoginBloc, LoginState>(
+      buildWhen: (previous, current) =>
+          previous.password != current.password ||
+          previous.obscurePassword != current.obscurePassword ||
+          previous.passwordValidationError != current.passwordValidationError,
+      builder: (context, state) {
+        return AppFilledTextField(
+          onChanged: (password) => context.read<LoginBloc>().add(
+            LoginEvent.passwordChanged(password),
+          ),
           hintText: AppStrings.hintPassword,
-          obscureText: _obscurePassword,
+          errorText: state.passwordValidationError,
+          labelText: AppStrings.labelPassword,
+          obscureText: state.obscurePassword,
           suffixIcon: GestureDetector(
-            onTap: () => setState(() => _obscurePassword = !_obscurePassword),
+            onTap: () => context.read<LoginBloc>().add(
+              const LoginEvent.obscurePasswordToggled(),
+            ),
             child: SvgPicture.asset(AppIcons.icPasswordVisible),
           ),
-          textInputAction: TextInputAction.done,
-        ),
-        SpacerBox(height: spacing.lg),
-        SpacerBox(height: spacing.lg),
-        AppFilledButton(
+        );
+      },
+    );
+  }
+}
+
+class _LoginButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final appColors = context.appColors;
+    //final isValid = context.select((LoginBloc bloc) => bloc.state.isValid);
+    final isLoading = context.select(
+      (LoginBloc bloc) => bloc.state.status.isInProgress,
+    );
+
+    return BlocBuilder<LoginBloc, LoginState>(
+      builder: (context, state) {
+        return AppFilledButton(
+          isLoading: isLoading,
           label: AppStrings.actionSignIn,
           width: double.infinity,
           backgroundColor: appColors.primary,
-          onPressed: () {},
-        ),
-      ],
+          onPressed: () {
+            AppLogger.log('Login button pressed');
+            context.read<LoginBloc>().add(const LoginEvent.submitted());
+          },
+        );
+      },
     );
   }
 }

@@ -19,4 +19,7 @@ final class AppStrings {
   static const String actionHelp = "Help: 0989 9898098";
   static const String labelPoweredBy = "Powered By ";
   static const String labelProtechSolution = "Protech solution";
+
+  static const String errorInvalidEmail = "Invalid email address";
+  static const String errorInvalidPassword = "Invalid password";
 }
