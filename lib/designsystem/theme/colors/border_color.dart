@@ -14,11 +14,16 @@ final class BorderColor extends ThemeExtension<BorderColor>
   /// The border color used when disabled.
   final Color disable;
 
+  final Color violet;
+  final Color info;
+
   BorderColor._({
     required this.primary,
     required this.secondary,
     required this.error,
     required this.disable,
+    required this.violet,
+    required this.info,
   });
 
   @override
@@ -27,17 +32,28 @@ final class BorderColor extends ThemeExtension<BorderColor>
     Color? secondaryStrokeColor,
     Color? errorStrokeColor,
     Color? disableStrokeColor,
+    Color? violetStrokeColor,
+    Color? infoStrokeColor,
   }) {
     return copyWithList([
       primaryStrokeColor,
       secondaryStrokeColor,
       errorStrokeColor,
       disableStrokeColor,
+      violetStrokeColor,
+      infoStrokeColor,
     ]);
   }
 
   @override
-  List<Color> get colorFields => [primary, secondary, error, disable];
+  List<Color> get colorFields => [
+    primary,
+    secondary,
+    error,
+    disable,
+    violet,
+    info,
+  ];
 
   @override
   BorderColor createInstance(List<Color> colors) {
@@ -46,6 +62,8 @@ final class BorderColor extends ThemeExtension<BorderColor>
       secondary: colors[1],
       error: colors[2],
       disable: colors[3],
+      violet: colors[4],
+      info: colors[5],
     );
   }
 
@@ -54,6 +72,8 @@ final class BorderColor extends ThemeExtension<BorderColor>
     secondary: ColorPallet.secondary.shade500,
     error: ColorPallet.error.shade500,
     disable: ColorPallet.neutral.shade300,
+    violet: ColorPallet.indigo.shade500,
+    info: ColorPallet.info.shade500,
   );
 
   static final _darkThemeColor = BorderColor._(
@@ -61,5 +81,7 @@ final class BorderColor extends ThemeExtension<BorderColor>
     secondary: ColorPallet.secondary.shade500,
     error: ColorPallet.error.shade500,
     disable: ColorPallet.neutral.shade300,
+    violet: ColorPallet.indigo.shade500,
+    info: ColorPallet.info.shade500,
   );
 }

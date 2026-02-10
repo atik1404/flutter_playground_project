@@ -17,12 +17,17 @@ final class TextColor extends ThemeExtension<TextColor>
   /// The text color used to indicate error.
   final Color error;
 
+  final Color violet;
+  final Color info;
+
   TextColor._({
     required this.primary,
     required this.secondary,
     required this.white,
     required this.tertiary,
     required this.error,
+    required this.violet,
+    required this.info,
   });
 
   @override
@@ -32,6 +37,8 @@ final class TextColor extends ThemeExtension<TextColor>
     Color? whiteTextColor,
     Color? errorTextColor,
     Color? tertiaryTextColor,
+    Color? violetTextColor,
+    Color? infoTextColor,
   }) {
     return copyWithList([
       primaryTextColor,
@@ -39,11 +46,21 @@ final class TextColor extends ThemeExtension<TextColor>
       whiteTextColor,
       tertiaryTextColor,
       errorTextColor,
+      violetTextColor,
+      infoTextColor,
     ]);
   }
 
   @override
-  List<Color> get colorFields => [primary, secondary, white, tertiary, error];
+  List<Color> get colorFields => [
+    primary,
+    secondary,
+    white,
+    tertiary,
+    error,
+    violet,
+    info,
+  ];
 
   @override
   TextColor createInstance(List<Color> colors) {
@@ -53,6 +70,8 @@ final class TextColor extends ThemeExtension<TextColor>
       white: colors[2],
       tertiary: colors[3],
       error: colors[4],
+      violet: colors[5],
+      info: colors[6],
     );
   }
 
@@ -62,6 +81,8 @@ final class TextColor extends ThemeExtension<TextColor>
     tertiary: ColorPallet.neutral.shade300,
     white: ColorPallet.white,
     error: ColorPallet.error.shade500,
+    violet: ColorPallet.indigo.shade500,
+    info: ColorPallet.info.shade500,
   );
 
   static final _darkThemeColor = TextColor._(
@@ -70,5 +91,7 @@ final class TextColor extends ThemeExtension<TextColor>
     tertiary: ColorPallet.neutral.shade300,
     white: ColorPallet.white,
     error: ColorPallet.error.shade500,
+    violet: ColorPallet.indigo.shade500,
+    info: ColorPallet.info.shade500,
   );
 }
