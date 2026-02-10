@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:playground_flutter_project/core/router/app_routes_name.dart';
 import 'package:playground_flutter_project/core/router/base_router.dart';
+import 'package:playground_flutter_project/feature/auth/login/login_router.dart';
 import 'package:playground_flutter_project/feature/auth/splash/splash_router.dart';
 
-List<BaseRouter> get routers => [SplashRouter()];
+List<BaseRouter> get routers => [SplashRouter(), LoginRouter()];
 
 final GoRouter router = goRouter();
 final routeObserver = RouteObserver<ModalRoute<void>>();
@@ -13,7 +14,7 @@ final GlobalKey<NavigatorState> rootNavKey = GlobalKey<NavigatorState>();
 
 GoRouter goRouter() {
   return GoRouter(
-    initialLocation: AppRoutesName.splashScreen,
+    initialLocation: AppRoutesName.loginScreen,
     navigatorKey: rootNavKey,
     routes: [...routers.expand((r) => r.routes)],
     errorBuilder: (context, state) {

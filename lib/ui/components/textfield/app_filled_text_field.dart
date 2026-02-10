@@ -16,9 +16,11 @@ class AppFilledTextField extends StatelessWidget {
   final int? maxLength;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
+  final BoxConstraints? prefixIconConstraints;
+  final BoxConstraints? suffixIconConstraints;
   final Color? borderColor;
   final double borderRadius;
-  final EdgeInsetsGeometry contentPadding;
+  final EdgeInsetsGeometry? contentPadding;
   final bool enabled;
   final FocusNode? focusNode;
 
@@ -36,12 +38,11 @@ class AppFilledTextField extends StatelessWidget {
     this.maxLength,
     this.prefixIcon,
     this.suffixIcon,
+    this.prefixIconConstraints,
+    this.suffixIconConstraints,
     this.borderColor,
     this.borderRadius = 15.0,
-    this.contentPadding = const EdgeInsets.symmetric(
-      horizontal: 16,
-      vertical: 14,
-    ),
+    this.contentPadding,
     this.enabled = true,
     this.focusNode,
   });
@@ -61,6 +62,8 @@ class AppFilledTextField extends StatelessWidget {
       maxLength: maxLength,
       prefixIcon: prefixIcon,
       suffixIcon: suffixIcon,
+      prefixIconConstraints: prefixIconConstraints,
+      suffixIconConstraints: suffixIconConstraints,
       borderColor: borderColor,
       borderRadius: borderRadius,
       contentPadding: contentPadding,

@@ -4,4 +4,3 @@ class AppRoutesName {
   static const splashScreen = "/";
   static const loginScreen = "/login";
 }
-    

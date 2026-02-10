@@ -330,41 +330,47 @@ final class AppTypography extends ThemeExtension<AppTypography>
   ///
   /// Uses "Roboto" font family and defines sizes in `sp` (screenutil).
   static final instance = AppTypography._(
-    titleLargeRegular: _getTypoStyle(22, FontWeight.w400),
-    titleLargeMedium: _getTypoStyle(22, FontWeight.w500),
-    titleLargeSemiBold: _getTypoStyle(22, FontWeight.w600),
-    titleLargeBold: _getTypoStyle(22, FontWeight.w700),
-    titleLargeLight: _getTypoStyle(22, FontWeight.w300),
-    titleMediumRegular: _getTypoStyle(20, FontWeight.w400),
-    titleMediumMedium: _getTypoStyle(20, FontWeight.w500),
-    titleMediumSemiBold: _getTypoStyle(20, FontWeight.w600),
-    titleMediumBold: _getTypoStyle(20, FontWeight.w700),
-    titleMediumLight: _getTypoStyle(20, FontWeight.w300),
+    titleLargeRegular: _getTypoStyle(30, FontWeight.w400),
+    titleLargeMedium: _getTypoStyle(30, FontWeight.w500),
+    titleLargeSemiBold: _getTypoStyle(30, FontWeight.w600),
+    titleLargeBold: _getTypoStyle(30, FontWeight.w700),
+    titleLargeLight: _getTypoStyle(30, FontWeight.w300),
+
+    titleMediumRegular: _getTypoStyle(22, FontWeight.w400),
+    titleMediumMedium: _getTypoStyle(22, FontWeight.w500),
+    titleMediumSemiBold: _getTypoStyle(22, FontWeight.w600),
+    titleMediumBold: _getTypoStyle(22, FontWeight.w700),
+    titleMediumLight: _getTypoStyle(22, FontWeight.w300),
+
     titleSmallRegular: _getTypoStyle(18, FontWeight.w400),
     titleSmallMedium: _getTypoStyle(18, FontWeight.w500),
     titleSmallSemiBold: _getTypoStyle(18, FontWeight.w600),
     titleSmallBold: _getTypoStyle(18, FontWeight.w700),
     titleSmallLight: _getTypoStyle(18, FontWeight.w300),
+
     bodyLargeRegular: _getTypoStyle(16, FontWeight.w400),
     bodyLargeMedium: _getTypoStyle(16, FontWeight.w500),
     bodyLargeSemiBold: _getTypoStyle(16, FontWeight.w600),
     bodyLargeBold: _getTypoStyle(16, FontWeight.w700),
     bodyLargeLight: _getTypoStyle(16, FontWeight.w300),
+
     bodyMediumRegular: _getTypoStyle(14, FontWeight.w400),
     bodyMediumMedium: _getTypoStyle(14, FontWeight.w500),
     bodyMediumSemiBold: _getTypoStyle(14, FontWeight.w600),
     bodyMediumBold: _getTypoStyle(14, FontWeight.w700),
     bodyMediumLight: _getTypoStyle(14, FontWeight.w300),
+
     bodySmallRegular: _getTypoStyle(12, FontWeight.w400),
     bodySmallMedium: _getTypoStyle(12, FontWeight.w500),
     bodySmallSemiBold: _getTypoStyle(12, FontWeight.w600),
     bodySmallBold: _getTypoStyle(12, FontWeight.w700),
     bodySmallLight: _getTypoStyle(12, FontWeight.w300),
-    bodyExtraSmallRegular: _getTypoStyle(11, FontWeight.w400),
-    bodyExtraSmallMedium: _getTypoStyle(11, FontWeight.w500),
-    bodyExtraSmallSemiBold: _getTypoStyle(11, FontWeight.w600),
-    bodyExtraSmallBold: _getTypoStyle(11, FontWeight.w700),
-    bodyExtraSmallLight: _getTypoStyle(11, FontWeight.w300),
+
+    bodyExtraSmallRegular: _getTypoStyle(10, FontWeight.w400),
+    bodyExtraSmallMedium: _getTypoStyle(10, FontWeight.w500),
+    bodyExtraSmallSemiBold: _getTypoStyle(10, FontWeight.w600),
+    bodyExtraSmallBold: _getTypoStyle(10, FontWeight.w700),
+    bodyExtraSmallLight: _getTypoStyle(10, FontWeight.w300),
   );
 
   static TextStyle _getTypoStyle(double fontSize, FontWeight fontWeight) {

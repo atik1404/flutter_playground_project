@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:playground_flutter_project/designsystem/dimensions/app_spacing.dart';
 import 'package:playground_flutter_project/designsystem/extensions/theme_context_extension.dart';
 
 /// A customizable text field widget that maintains consistent styling across the app.
@@ -29,9 +30,11 @@ class AppTextField extends StatefulWidget {
   final int? maxLength;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
+  final BoxConstraints? prefixIconConstraints;
+  final BoxConstraints? suffixIconConstraints;
   final Color? borderColor;
   final double borderRadius;
-  final EdgeInsetsGeometry contentPadding;
+  final EdgeInsetsGeometry? contentPadding;
   final bool enabled;
   final bool isFillColorEnabled;
   final FocusNode? focusNode;
@@ -51,6 +54,8 @@ class AppTextField extends StatefulWidget {
   /// - [maxLength]: The maximum number of characters allowed in the text field.
   /// - [prefixIcon]: An icon to show before the input area.
   /// - [suffixIcon]: An icon to show after the input area.
+  /// - [prefixIconConstraints]: Constraints for prefix icon.
+  /// - [suffixIconConstraints]: Constraints for suffix icon.
   /// - [borderColor]: The color of the border. Falls back to theme color if null.
   /// - [borderRadius]: The radius of the border corners.
   /// - [contentPadding]: The padding around the content of the text field.
@@ -69,12 +74,11 @@ class AppTextField extends StatefulWidget {
     this.maxLength,
     this.prefixIcon,
     this.suffixIcon,
+    this.prefixIconConstraints,
+    this.suffixIconConstraints,
     this.borderColor,
     this.borderRadius = 15.0,
-    this.contentPadding = const EdgeInsets.symmetric(
-      horizontal: 16,
-      vertical: 14,
-    ),
+    this.contentPadding,
     this.enabled = true,
     this.isFillColorEnabled = true,
     this.focusNode,
@@ -86,68 +90,34 @@ class AppTextField extends StatefulWidget {
 }
 
 class _AppTextFieldState extends State<AppTextField> {
-  bool _isObscured = true;
+  // ... existing code ...
 
-  /// Builds the widget representation of [AppTextField].
-  ///
-  /// This method constructs a [TextFormField] with customized styling based on the
-  /// app's theme and the provided parameters. It handles:
-  /// - Border styling for different states (normal, focused, error)
-  /// - Text and hint styling
-  /// - Input formatting and validation
-  /// - Keyboard configuration
-  ///
-  /// Returns a styled [TextFormField] wrapped in a [SizedBox] for proper sizing.
   @override
   Widget build(BuildContext context) {
-    final materialColors = context.appColors;
     final lineSizes = context.lineSizes;
+    final padding = AppSpacing.all(context.spacingSizes.md);
 
     return TextFormField(
-      controller: widget.controller,
-      focusNode: widget.focusNode,
-      obscureText: widget.obscureText && _isObscured,
-      keyboardType: widget.keyboardType,
       textInputAction: widget.textInputAction,
-      onChanged: widget.onChanged,
-      inputFormatters: widget.inputFormatters,
-      maxLines: widget.maxLines,
-      maxLength: widget.maxLength,
-      enabled: widget.enabled,
-      style: TextStyle(
-        color: widget.enabled
-            ? context.textFieldColors.input
-            : context.textFieldColors.disabled,
-      ),
-      onFieldSubmitted: (value) {
-        if (widget.textInputAction == TextInputAction.next) {
-          FocusScope.of(context).nextFocus();
-        } else if (widget.textInputAction == TextInputAction.done) {
-          FocusScope.of(context).unfocus();
-        }
-      },
+      controller: widget.controller,
+      obscureText: widget.obscureText,
+      // ... existing properties ...
       decoration: InputDecoration(
         hintText: widget.hintText,
-        hintStyle: TextStyle(color: context.textFieldColors.hint),
-        labelText: widget.labelText,
-        labelStyle: TextStyle(color: context.textFieldColors.label),
-        prefixIcon: widget.prefixIcon,
-        suffixIcon: widget.obscureText
-            ? IconButton(
-                icon: Icon(
-                  _isObscured ? Icons.visibility_off : Icons.visibility,
-                  color: widget.enabled
-                      ? materialColors.onSurface
-                      : context.textFieldColors.disabled,
-                ),
-                onPressed: () {
-                  setState(() {
-                    _isObscured = !_isObscured;
-                  });
-                },
-              )
-            : widget.suffixIcon,
-        contentPadding: widget.contentPadding,
+        hintStyle: context.typography.bodySmallLight.copyWith(
+          color: context.textFieldColors.hint,
+        ),
+        // ... existing properties ...
+        prefixIcon: widget.prefixIcon != null
+            ? Padding(padding: padding, child: widget.prefixIcon)
+            : null,
+        suffixIcon: widget.suffixIcon != null
+            ? Padding(padding: padding, child: widget.suffixIcon)
+            : null,
+        prefixIconConstraints: widget.prefixIconConstraints,
+        suffixIconConstraints: widget.suffixIconConstraints,
+        // ...
+        //contentPadding: widget.contentPadding,
         fillColor: context.textFieldColors.fill,
         filled: widget.isFillColorEnabled,
         border: OutlineInputBorder(

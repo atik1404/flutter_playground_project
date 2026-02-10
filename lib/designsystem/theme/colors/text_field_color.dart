@@ -105,7 +105,7 @@ final class TextFieldColor extends ThemeExtension<TextFieldColor>
   static final _lightThemeColor = TextFieldColor._(
     fill: ColorPallet.neutral.shade50,
     input: ColorPallet.neutral.shade900,
-    hint: ColorPallet.neutral.shade400,
+    hint: ColorPallet.neutral.shade600,
     label: ColorPallet.neutral.shade600,
     error: ColorPallet.error.shade500,
     enabledBorder: ColorPallet.neutral.shade300,
@@ -118,7 +118,7 @@ final class TextFieldColor extends ThemeExtension<TextFieldColor>
   static final _darkThemeColor = TextFieldColor._(
     fill: ColorPallet.neutral.shade900,
     input: ColorPallet.white,
-    hint: ColorPallet.neutral.shade500,
+    hint: ColorPallet.neutral.shade600,
     label: ColorPallet.neutral.shade400,
     error: ColorPallet.error.shade400,
     enabledBorder: ColorPallet.neutral.shade700,

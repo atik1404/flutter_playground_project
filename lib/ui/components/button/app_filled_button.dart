@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:playground_flutter_project/designsystem/extensions/theme_context_extension.dart';
 import 'package:playground_flutter_project/ui/components/base/app_button.dart';
 
 /// A filled button widget that uses [AppButton.filled].
@@ -69,7 +70,7 @@ class AppFilledButton extends StatelessWidget {
       height: height,
       backgroundColor: backgroundColor,
       foregroundColor: foregroundColor,
-      borderRadius: borderRadius,
+      borderRadius: borderRadius ?? BorderRadius.circular(context.shapeRadius.full),
     );
   }
 }
