@@ -55,11 +55,11 @@ extension LoginEventPatterns on LoginEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( EmailChanged value)?  emailChanged,TResult Function( PasswordChanged value)?  passwordChanged,TResult Function( Submitted value)?  submitted,TResult Function( ObscurePasswordToggled value)?  obscurePasswordToggled,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( PhoneChanged value)?  phoneChanged,TResult Function( PasswordChanged value)?  passwordChanged,TResult Function( Submitted value)?  submitted,TResult Function( ObscurePasswordToggled value)?  obscurePasswordToggled,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case EmailChanged() when emailChanged != null:
-return emailChanged(_that);case PasswordChanged() when passwordChanged != null:
+case PhoneChanged() when phoneChanged != null:
+return phoneChanged(_that);case PasswordChanged() when passwordChanged != null:
 return passwordChanged(_that);case Submitted() when submitted != null:
 return submitted(_that);case ObscurePasswordToggled() when obscurePasswordToggled != null:
 return obscurePasswordToggled(_that);case _:
@@ -80,11 +80,11 @@ return obscurePasswordToggled(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( EmailChanged value)  emailChanged,required TResult Function( PasswordChanged value)  passwordChanged,required TResult Function( Submitted value)  submitted,required TResult Function( ObscurePasswordToggled value)  obscurePasswordToggled,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( PhoneChanged value)  phoneChanged,required TResult Function( PasswordChanged value)  passwordChanged,required TResult Function( Submitted value)  submitted,required TResult Function( ObscurePasswordToggled value)  obscurePasswordToggled,}){
 final _that = this;
 switch (_that) {
-case EmailChanged():
-return emailChanged(_that);case PasswordChanged():
+case PhoneChanged():
+return phoneChanged(_that);case PasswordChanged():
 return passwordChanged(_that);case Submitted():
 return submitted(_that);case ObscurePasswordToggled():
 return obscurePasswordToggled(_that);case _:
@@ -104,11 +104,11 @@ return obscurePasswordToggled(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( EmailChanged value)?  emailChanged,TResult? Function( PasswordChanged value)?  passwordChanged,TResult? Function( Submitted value)?  submitted,TResult? Function( ObscurePasswordToggled value)?  obscurePasswordToggled,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( PhoneChanged value)?  phoneChanged,TResult? Function( PasswordChanged value)?  passwordChanged,TResult? Function( Submitted value)?  submitted,TResult? Function( ObscurePasswordToggled value)?  obscurePasswordToggled,}){
 final _that = this;
 switch (_that) {
-case EmailChanged() when emailChanged != null:
-return emailChanged(_that);case PasswordChanged() when passwordChanged != null:
+case PhoneChanged() when phoneChanged != null:
+return phoneChanged(_that);case PasswordChanged() when passwordChanged != null:
 return passwordChanged(_that);case Submitted() when submitted != null:
 return submitted(_that);case ObscurePasswordToggled() when obscurePasswordToggled != null:
 return obscurePasswordToggled(_that);case _:
@@ -128,10 +128,10 @@ return obscurePasswordToggled(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String email)?  emailChanged,TResult Function( String password)?  passwordChanged,TResult Function()?  submitted,TResult Function()?  obscurePasswordToggled,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String phone)?  phoneChanged,TResult Function( String password)?  passwordChanged,TResult Function()?  submitted,TResult Function()?  obscurePasswordToggled,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case EmailChanged() when emailChanged != null:
-return emailChanged(_that.email);case PasswordChanged() when passwordChanged != null:
+case PhoneChanged() when phoneChanged != null:
+return phoneChanged(_that.phone);case PasswordChanged() when passwordChanged != null:
 return passwordChanged(_that.password);case Submitted() when submitted != null:
 return submitted();case ObscurePasswordToggled() when obscurePasswordToggled != null:
 return obscurePasswordToggled();case _:
@@ -152,10 +152,10 @@ return obscurePasswordToggled();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String email)  emailChanged,required TResult Function( String password)  passwordChanged,required TResult Function()  submitted,required TResult Function()  obscurePasswordToggled,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String phone)  phoneChanged,required TResult Function( String password)  passwordChanged,required TResult Function()  submitted,required TResult Function()  obscurePasswordToggled,}) {final _that = this;
 switch (_that) {
-case EmailChanged():
-return emailChanged(_that.email);case PasswordChanged():
+case PhoneChanged():
+return phoneChanged(_that.phone);case PasswordChanged():
 return passwordChanged(_that.password);case Submitted():
 return submitted();case ObscurePasswordToggled():
 return obscurePasswordToggled();case _:
@@ -175,10 +175,10 @@ return obscurePasswordToggled();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String email)?  emailChanged,TResult? Function( String password)?  passwordChanged,TResult? Function()?  submitted,TResult? Function()?  obscurePasswordToggled,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String phone)?  phoneChanged,TResult? Function( String password)?  passwordChanged,TResult? Function()?  submitted,TResult? Function()?  obscurePasswordToggled,}) {final _that = this;
 switch (_that) {
-case EmailChanged() when emailChanged != null:
-return emailChanged(_that.email);case PasswordChanged() when passwordChanged != null:
+case PhoneChanged() when phoneChanged != null:
+return phoneChanged(_that.phone);case PasswordChanged() when passwordChanged != null:
 return passwordChanged(_that.password);case Submitted() when submitted != null:
 return submitted();case ObscurePasswordToggled() when obscurePasswordToggled != null:
 return obscurePasswordToggled();case _:
@@ -192,43 +192,43 @@ return obscurePasswordToggled();case _:
 /// @nodoc
 
 
-class EmailChanged implements LoginEvent {
-  const EmailChanged(this.email);
+class PhoneChanged implements LoginEvent {
+  const PhoneChanged(this.phone);
   
 
- final  String email;
+ final  String phone;
 
 /// Create a copy of LoginEvent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$EmailChangedCopyWith<EmailChanged> get copyWith => _$EmailChangedCopyWithImpl<EmailChanged>(this, _$identity);
+$PhoneChangedCopyWith<PhoneChanged> get copyWith => _$PhoneChangedCopyWithImpl<PhoneChanged>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is EmailChanged&&(identical(other.email, email) || other.email == email));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PhoneChanged&&(identical(other.phone, phone) || other.phone == phone));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,email);
+int get hashCode => Object.hash(runtimeType,phone);
 
 @override
 String toString() {
-  return 'LoginEvent.emailChanged(email: $email)';
+  return 'LoginEvent.phoneChanged(phone: $phone)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $EmailChangedCopyWith<$Res> implements $LoginEventCopyWith<$Res> {
-  factory $EmailChangedCopyWith(EmailChanged value, $Res Function(EmailChanged) _then) = _$EmailChangedCopyWithImpl;
+abstract mixin class $PhoneChangedCopyWith<$Res> implements $LoginEventCopyWith<$Res> {
+  factory $PhoneChangedCopyWith(PhoneChanged value, $Res Function(PhoneChanged) _then) = _$PhoneChangedCopyWithImpl;
 @useResult
 $Res call({
- String email
+ String phone
 });
 
 
@@ -236,18 +236,18 @@ $Res call({
 
 }
 /// @nodoc
-class _$EmailChangedCopyWithImpl<$Res>
-    implements $EmailChangedCopyWith<$Res> {
-  _$EmailChangedCopyWithImpl(this._self, this._then);
+class _$PhoneChangedCopyWithImpl<$Res>
+    implements $PhoneChangedCopyWith<$Res> {
+  _$PhoneChangedCopyWithImpl(this._self, this._then);
 
-  final EmailChanged _self;
-  final $Res Function(EmailChanged) _then;
+  final PhoneChanged _self;
+  final $Res Function(PhoneChanged) _then;
 
 /// Create a copy of LoginEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? email = null,}) {
-  return _then(EmailChanged(
-null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+@pragma('vm:prefer-inline') $Res call({Object? phone = null,}) {
+  return _then(PhoneChanged(
+null == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

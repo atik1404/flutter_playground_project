@@ -10,7 +10,7 @@ class AuthApiServices {
 
   Future<Result<LoginApiResponse>> userLogin(LoginParams params) {
     return client.post(
-      "v1/auth/login",
+      "api/v1/user/login",
       data: params.toJson(),
       parseJson: (json) => LoginApiResponse.fromJson(json),
     );

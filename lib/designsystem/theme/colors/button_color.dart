@@ -137,7 +137,7 @@ final class ButtonColor extends ThemeExtension<ButtonColor>
     outlineBackground: ColorPallet.transparent,
     onOutline: ColorPallet.primary.shade500,
     disable: ColorPallet.primary.shade100,
-    disableContainer: ColorPallet.neutral.shade600,
+    disableContainer: ColorPallet.primary.shade200,
     error: ColorPallet.error.shade500,
     errorContainer: ColorPallet.error.shade100,
   );
@@ -153,7 +153,7 @@ final class ButtonColor extends ThemeExtension<ButtonColor>
     outlineBackground: ColorPallet.transparent,
     onOutline: ColorPallet.white,
     disable: ColorPallet.primary.shade100,
-    disableContainer: ColorPallet.neutral.shade600,
+    disableContainer: ColorPallet.primary.shade200,
     error: ColorPallet.error.shade500,
     errorContainer: ColorPallet.error.shade100,
   );

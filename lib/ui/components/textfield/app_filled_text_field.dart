@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:playground_flutter_project/designsystem/extensions/theme_context_extension.dart';
-import 'package:playground_flutter_project/designsystem/resources/app_icons.dart';
 import 'package:playground_flutter_project/ui/components/app_text.dart';
 import 'package:playground_flutter_project/ui/components/base/app_text_field.dart';
 import 'package:playground_flutter_project/ui/components/spacer_box.dart';
@@ -58,7 +56,6 @@ class AppFilledTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     final spacing = context.spacingSizes;
     final typography = context.typography;
-    final iconSize = context.iconSizes;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,25 +79,12 @@ class AppFilledTextField extends StatelessWidget {
           prefixIconConstraints: prefixIconConstraints,
           suffixIconConstraints: suffixIconConstraints,
           borderColor: borderColor,
+          errorText: errorText,
           borderRadius: borderRadius,
           contentPadding: contentPadding,
           enabled: enabled,
           focusNode: focusNode,
         ),
-
-        if (errorText != null) ...[
-          SpacerBox(height: spacing.sm),
-          AppText(
-            errorText!,
-            style: typography.bodySmallLight,
-            color: context.textColors.error,
-            leading: SvgPicture.asset(
-              AppIcons.icError,
-              width: iconSize.sm,
-              height: iconSize.sm,
-            ),
-          ),
-        ],
       ],
     );
   }

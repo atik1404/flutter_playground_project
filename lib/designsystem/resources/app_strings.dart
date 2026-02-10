@@ -9,8 +9,8 @@ final class AppStrings {
   static const String labelYear2025 = "2025";
   static const String titleWelcomeBack = "Welcome Back";
   static const String titleSignToContinue = "Sign to Continue";
-  static const String labelEmailAddress = "Email Address";
-  static const String hintEmailAddress = "some007@gmail.com";
+  static const String labelPhoneAddress = "Phone Number";
+  static const String hintEmailAddress = "+8801XXXXXXXXX";
   static const String labelPassword = "Your Password";
   static const String hintPassword = "Password";
   static const String actionRememberMe = "Remember me";

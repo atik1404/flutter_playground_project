@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:playground_flutter_project/core/network/network_exception.dart';
+import 'package:playground_flutter_project/core/network/api_error.dart';
 import 'package:playground_flutter_project/core/network/result.dart';
 
 Future<Result<T>> handleApiResponse<T>(
@@ -10,9 +10,9 @@ Future<Result<T>> handleApiResponse<T>(
     final response = await request();
     final parsedData = parseJson(response.data);
 
-    return SuccessResult<T>(parsedData);
-  } on NetworkException catch (e) {
-    return FailureResult<T>(e);
+    return Success<T>(parsedData);
+  } on ApiError catch (e) {
+    return Failure<T>(e);
   } on DioException catch (e) {
     String? errorMessage;
     if (e.response?.data != null) {
@@ -29,15 +29,15 @@ Future<Result<T>> handleApiResponse<T>(
       }
     }
 
-    return FailureResult<T>(
-      NetworkException(
-        description: errorMessage ?? e.message ?? 'Unknown Dio error',
+    return Failure<T>(
+      ApiError.serverError(
+        message: errorMessage ?? e.message ?? 'Unknown Dio error',
         statusCode: e.response?.statusCode ?? 500,
       ),
     );
   } catch (e) {
-    return FailureResult<T>(
-      NetworkException(description: e.toString(), statusCode: 500),
+    return Failure<T>(
+      ApiError.serverError(message: e.toString(), statusCode: 500),
     );
   }
 }

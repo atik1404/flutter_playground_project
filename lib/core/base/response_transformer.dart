@@ -12,11 +12,11 @@ final class ResponseTransformer {
     required BaseMapper<Model, Entity> mapper,
   }) {
     switch (response) {
-      case SuccessResult<Model>():
-        return SuccessResult(mapper.map(response.data));
+      case Success<Model>():
+        return Success(mapper.map(response.data));
 
-      case FailureResult<Model>():
-        return FailureResult(response.exception);
+      case Failure<Model>():
+        return Failure(response.error);
     }
   }
 }

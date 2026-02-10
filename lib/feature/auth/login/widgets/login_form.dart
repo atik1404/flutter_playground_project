@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:formz/formz.dart';
 import 'package:playground_flutter_project/common/logger/app_logger.dart';
-import 'package:playground_flutter_project/common/logger/app_toast.dart';
 import 'package:playground_flutter_project/designsystem/extensions/theme_context_extension.dart';
 import 'package:playground_flutter_project/designsystem/resources/app_icons.dart';
 import 'package:playground_flutter_project/designsystem/resources/app_strings.dart';
@@ -21,44 +20,38 @@ class LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final spacing = context.spacingSizes;
 
-    return BlocListener<LoginBloc, LoginState>(
-      listener: (context, state) {
-        if (state.status.isFailure) {
-          AppToast.toast(
-            message: state.apiErrorMsg,
-            toastType: ToastType.error,
-          );
-        }
-      },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _EmailInput(),
-          SpacerBox(height: spacing.lg),
-          _PasswordInput(),
-          SpacerBox(height: spacing.xl),
-          _LoginButton(),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _PhoneInput(),
+        SpacerBox(height: spacing.lg),
+        _PasswordInput(),
+        SpacerBox(height: spacing.xl),
+        _LoginButton(),
+      ],
     );
   }
 }
 
-class _EmailInput extends StatelessWidget {
+class _PhoneInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginBloc, LoginState>(
-      buildWhen: (previous, current) =>
-          previous.email != current.email ||
-          previous.emailValidationError != current.emailValidationError,
       builder: (context, state) {
         return AppFilledTextField(
-          labelText: AppStrings.labelEmailAddress,
+          labelText: AppStrings.labelPhoneAddress,
           errorText: state.emailValidationError,
-          onChanged: (email) =>
-              context.read<LoginBloc>().add(LoginEvent.emailChanged(email)),
+          onChanged: (phone) => {
+            context.read<LoginBloc>().add(LoginEvent.phoneChanged(phone)),
+          },
           hintText: AppStrings.hintEmailAddress,
-          suffixIcon: SvgPicture.asset(AppIcons.icEmail),
+          suffixIcon: SvgPicture.asset(
+            AppIcons.icPhone,
+            colorFilter: ColorFilter.mode(
+              context.appColors.primaryContainer,
+              BlendMode.srcIn,
+            ),
+          ),
           keyboardType: TextInputType.emailAddress,
         );
       },
@@ -87,7 +80,13 @@ class _PasswordInput extends StatelessWidget {
             onTap: () => context.read<LoginBloc>().add(
               const LoginEvent.obscurePasswordToggled(),
             ),
-            child: SvgPicture.asset(AppIcons.icPasswordVisible),
+            child: SvgPicture.asset(
+              AppIcons.icPasswordVisible,
+              colorFilter: ColorFilter.mode(
+                context.appColors.primaryContainer,
+                BlendMode.srcIn,
+              ),
+            ),
           ),
         );
       },

@@ -1,6 +1,10 @@
 import 'package:get_it/get_it.dart';
 import 'package:playground_flutter_project/core/config/app_core_env.dart';
 import 'package:playground_flutter_project/core/di/annotation/di_annotation.dart';
+import 'package:playground_flutter_project/core/di/module/api_service_di_module.dart';
+import 'package:playground_flutter_project/core/di/module/mapper_di_module.dart';
+import 'package:playground_flutter_project/core/di/module/repository_di_module.dart';
+import 'package:playground_flutter_project/core/di/module/usecase_di_module.dart';
 import 'package:playground_flutter_project/core/network/network_client.dart';
 import 'package:playground_flutter_project/core/sharedpref/shared_prefs.dart';
 
@@ -26,4 +30,12 @@ Future<void> initDi() async {
       ),
       instanceName: DIAnnotation.authBaseUrl.toString(),
     );
+
+  await registerAuthUseCaseModule();
+
+  await registerRepositoryModule();
+
+  await registerApiServiceModule();
+
+  await registerAuthMapperModule();
 }

@@ -1,42 +1,43 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:playground_flutter_project/designsystem/resources/app_strings.dart';
-import 'package:playground_flutter_project/feature/auth/data/repository/auth_repository.dart';
+import 'package:playground_flutter_project/domain/entities/params/login_params.dart';
+import 'package:playground_flutter_project/domain/usecase/auth/post_login_api_usecase.dart';
 import 'package:playground_flutter_project/feature/auth/login/bloc/login_event.dart';
 import 'package:playground_flutter_project/feature/auth/login/bloc/login_state.dart';
-import 'package:playground_flutter_project/feature/auth/login/models/email.dart';
-import 'package:playground_flutter_project/feature/auth/login/models/password.dart';
+import 'package:playground_flutter_project/feature/auth/login/models/phone_validator.dart';
+import 'package:playground_flutter_project/feature/auth/login/models/password_validator.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  final AuthRepository _authRepository;
+  final PostLoginApiUsecase _postLoginApiUsecase;
 
-  LoginBloc({required AuthRepository authRepository})
-    : _authRepository = authRepository,
+  LoginBloc({required PostLoginApiUsecase postLoginApiUsecase})
+    : _postLoginApiUsecase = postLoginApiUsecase,
       super(const LoginState()) {
-    on<EmailChanged>(_onEmailChanged);
+    on<PhoneChanged>(_onPhoneChanged);
     on<PasswordChanged>(_onPasswordChanged);
     on<Submitted>(_onSubmitted);
     on<ObscurePasswordToggled>(_onObscurePasswordToggled);
   }
 
-  void _onEmailChanged(EmailChanged event, Emitter<LoginState> emit) {
-    final email = Email.dirty(event.email);
+  void _onPhoneChanged(PhoneChanged event, Emitter<LoginState> emit) {
+    final email = PhoneValidator.dirty(event.phone);
     emit(
       state.copyWith(
         email: email,
         isValid: Formz.validate([email, state.password]),
-        emailValidationError: null,
+        emailValidationError: '',
       ),
     );
   }
 
   void _onPasswordChanged(PasswordChanged event, Emitter<LoginState> emit) {
-    final password = Password.dirty(event.password);
+    final password = PasswordValidator.dirty(event.password);
     emit(
       state.copyWith(
         password: password,
         isValid: Formz.validate([state.email, password]),
-        passwordValidationError: null,
+        passwordValidationError: '',
       ),
     );
   }
@@ -49,29 +50,41 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     }
 
     if (state.password.isNotValid) {
-      emit(state.copyWith(passwordValidationError: AppStrings.errorInvalidPassword));
+      emit(
+        state.copyWith(
+          passwordValidationError: AppStrings.errorInvalidPassword,
+        ),
+      );
 
       return;
     }
 
-    emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+    emit(
+      state.copyWith(
+        status: FormzSubmissionStatus.inProgress,
+        apiErrorMsg: '',
+        emailValidationError: '',
+        passwordValidationError: '',
+      ),
+    );
 
-    try {
-      await _authRepository.login(
-        email: state.email.value,
-        password: state.password.value,
-      );
+    final result = await _postLoginApiUsecase.invoke(
+      LoginParams(phone: state.email.value, password: state.password.value),
+    );
 
-      emit(state.copyWith(status: FormzSubmissionStatus.success));
-
-    } catch (e) {
-      emit(
-        state.copyWith(
-          status: FormzSubmissionStatus.failure,
-          apiErrorMsg: e.toString(),
-        ),
-      );
-    }
+    result.when(
+      success: (data) {
+        emit(state.copyWith(status: FormzSubmissionStatus.success));
+      },
+      failure: (error) {
+        emit(
+          state.copyWith(
+            status: FormzSubmissionStatus.failure,
+            apiErrorMsg: error.message,
+          ),
+        );
+      },
+    );
   }
 
   void _onObscurePasswordToggled(

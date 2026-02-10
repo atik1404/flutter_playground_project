@@ -38,6 +38,7 @@ class AppTextField extends StatefulWidget {
   final bool enabled;
   final bool isFillColorEnabled;
   final FocusNode? focusNode;
+  final String? errorText;
 
   /// Creates an [AppTextField] widget.
   ///
@@ -82,6 +83,7 @@ class AppTextField extends StatefulWidget {
     this.enabled = true,
     this.isFillColorEnabled = true,
     this.focusNode,
+    this.errorText,
   });
 
   @override
@@ -98,11 +100,14 @@ class _AppTextFieldState extends State<AppTextField> {
     final padding = AppSpacing.all(context.spacingSizes.md);
 
     return TextFormField(
+      onChanged: widget.onChanged,
+      
       textInputAction: widget.textInputAction,
       controller: widget.controller,
       obscureText: widget.obscureText,
       // ... existing properties ...
       decoration: InputDecoration(
+        errorText: (widget.errorText?.isEmpty ?? true) ? null : widget.errorText,
         hintText: widget.hintText,
         hintStyle: context.typography.bodySmallLight.copyWith(
           color: context.textFieldColors.hint,
