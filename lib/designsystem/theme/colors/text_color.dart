@@ -77,8 +77,8 @@ final class TextColor extends ThemeExtension<TextColor>
 
   static final _lightThemeColor = TextColor._(
     primary: ColorPallet.neutral.shade900,
-    secondary: ColorPallet.neutral.shade600,
-    tertiary: ColorPallet.neutral.shade300,
+    secondary: ColorPallet.primary.shade300,
+    tertiary: ColorPallet.primary.shade100,
     white: ColorPallet.white,
     error: ColorPallet.error.shade500,
     violet: ColorPallet.indigo.shade500,
@@ -86,9 +86,9 @@ final class TextColor extends ThemeExtension<TextColor>
   );
 
   static final _darkThemeColor = TextColor._(
-    primary: ColorPallet.neutral.shade900,
-    secondary: ColorPallet.neutral.shade600,
-    tertiary: ColorPallet.neutral.shade300,
+    primary: ColorPallet.primary.shade900,
+    secondary: ColorPallet.primary.shade300,
+    tertiary: ColorPallet.primary.shade100,
     white: ColorPallet.white,
     error: ColorPallet.error.shade500,
     violet: ColorPallet.indigo.shade500,

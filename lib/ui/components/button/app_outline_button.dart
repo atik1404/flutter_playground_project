@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:playground_flutter_project/designsystem/extensions/theme_context_extension.dart';
 import 'package:playground_flutter_project/ui/components/base/app_button.dart';
 
 /// An outlined button widget that uses [AppButton.outline].
@@ -66,10 +67,11 @@ class AppOutlineButton extends StatelessWidget {
       isLoading: isLoading,
       width: width,
       maxWidth: maxWidth,
-      height: height,
       backgroundColor: backgroundColor,
       foregroundColor: foregroundColor,
-      borderRadius: borderRadius,
+      height: height,
+      borderRadius:
+          borderRadius ?? const BorderRadiusGeometry.all(Radius.circular(100)),
     );
   }
 }

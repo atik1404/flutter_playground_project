@@ -70,7 +70,8 @@ class AppFilledButton extends StatelessWidget {
       height: height,
       backgroundColor: backgroundColor,
       foregroundColor: foregroundColor,
-      borderRadius: borderRadius ?? BorderRadius.circular(context.shapeRadius.full),
+      borderRadius:
+          borderRadius ?? BorderRadius.circular(context.shapeRadius.full),
     );
   }
 }

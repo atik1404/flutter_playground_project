@@ -97,7 +97,6 @@ class _PasswordInput extends StatelessWidget {
 class _LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final appColors = context.appColors;
     //final isValid = context.select((LoginBloc bloc) => bloc.state.isValid);
     final isLoading = context.select(
       (LoginBloc bloc) => bloc.state.status.isInProgress,
@@ -109,7 +108,6 @@ class _LoginButton extends StatelessWidget {
           isLoading: isLoading,
           label: AppStrings.actionSignIn,
           width: double.infinity,
-          backgroundColor: appColors.primary,
           onPressed: () {
             AppLogger.log('Login button pressed');
             context.read<LoginBloc>().add(const LoginEvent.submitted());

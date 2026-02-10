@@ -14,7 +14,6 @@ class LoginFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final spacing = context.spacingSizes;
-    final appColors = context.appColors;
     final textColors = context.textColors;
     final typography = context.typography;
     final iconSize = context.iconSizes;
@@ -23,7 +22,6 @@ class LoginFooter extends StatelessWidget {
       children: [
         AppFilledButton(
           label: AppStrings.actionHelp,
-          backgroundColor: appColors.primary,
           leadingIcon: SvgPicture.asset(
             AppIcons.icPhone,
             width: iconSize.sm,

@@ -127,14 +127,14 @@ final class ButtonColor extends ThemeExtension<ButtonColor>
   }
 
   static final _lightThemeColor = ButtonColor._(
-    primary: ColorPallet.primary.shade500,
+    primary: ColorPallet.primary.shade400,
     onPrimary: ColorPallet.white,
     secondary: ColorPallet.secondary.shade500,
     onSecondary: ColorPallet.white,
     primaryContainer: ColorPallet.primary.shade500,
     onPrimaryContainer: ColorPallet.white,
     outline: ColorPallet.neutral.shade400,
-    outlineBackground: ColorPallet.transparent,
+    outlineBackground: ColorPallet.white,
     onOutline: ColorPallet.primary.shade500,
     disable: ColorPallet.primary.shade100,
     disableContainer: ColorPallet.primary.shade200,
@@ -143,14 +143,14 @@ final class ButtonColor extends ThemeExtension<ButtonColor>
   );
 
   static final _darkThemeColor = ButtonColor._(
-    primary: ColorPallet.primary.shade600,
+    primary: ColorPallet.primary.shade400,
     onPrimary: ColorPallet.white,
     secondary: ColorPallet.secondary.shade500,
     onSecondary: ColorPallet.white,
     primaryContainer: ColorPallet.primary.shade500,
     onPrimaryContainer: ColorPallet.white,
     outline: ColorPallet.neutral.shade600,
-    outlineBackground: ColorPallet.transparent,
+    outlineBackground: ColorPallet.white,
     onOutline: ColorPallet.white,
     disable: ColorPallet.primary.shade100,
     disableContainer: ColorPallet.primary.shade200,

@@ -196,7 +196,7 @@ class AppButton extends StatelessWidget {
         fg = foregroundColor ?? context.buttonColors.onPrimary;
         break;
       case AppButtonType.outline:
-        bg = Colors.transparent;
+        bg = context.buttonColors.outlineBackground;
         fg = foregroundColor ?? context.buttonColors.onOutline;
         side = BorderSide(color: context.buttonColors.outline);
         break;
