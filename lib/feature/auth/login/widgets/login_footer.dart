@@ -35,6 +35,7 @@ class LoginFooter extends StatelessWidget {
           },
         ),
         SpacerBox(height: spacing.xxl),
+        SpacerBox(height: spacing.xxl),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:playground_flutter_project/designsystem/dimensions/app_spacing.dart';
-import 'package:playground_flutter_project/designsystem/dimensions/dimension_aggregator.dart';
 import 'package:playground_flutter_project/designsystem/extensions/theme_context_extension.dart';
 import 'package:playground_flutter_project/feature/auth/login/widgets/login_footer.dart';
 import 'package:playground_flutter_project/feature/auth/login/widgets/login_form.dart';

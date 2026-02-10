@@ -30,10 +30,8 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     final spacing = context.spacingSizes;
-    final textColors = context.textColors;
     final appColors = context.appColors;
     final typography = context.typography;
-    final iconSize = context.iconSizes;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,6 +57,7 @@ class _LoginFormState extends State<LoginForm> {
           ),
           textInputAction: TextInputAction.done,
         ),
+        SpacerBox(height: spacing.lg),
         SpacerBox(height: spacing.lg),
         AppFilledButton(
           label: AppStrings.actionSignIn,
