@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:playground_flutter_project/designsystem/resources/app_strings.dart';
-import 'package:playground_flutter_project/domain/entities/params/login_params.dart';
+import 'package:playground_flutter_project/domain/entities/params/auth/login_params.dart';
 import 'package:playground_flutter_project/domain/usecase/auth/post_login_api_usecase.dart';
 import 'package:playground_flutter_project/feature/auth/login/bloc/login_event.dart';
 import 'package:playground_flutter_project/feature/auth/login/bloc/login_state.dart';

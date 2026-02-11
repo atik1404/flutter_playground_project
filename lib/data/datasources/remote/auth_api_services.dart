@@ -1,7 +1,7 @@
 import 'package:playground_flutter_project/core/network/network_client.dart';
 import 'package:playground_flutter_project/core/network/result.dart';
 import 'package:playground_flutter_project/data/apiresponse/auth/login_api_response.dart';
-import 'package:playground_flutter_project/domain/entities/params/login_params.dart';
+import 'package:playground_flutter_project/domain/entities/params/auth/login_params.dart';
 
 class AuthApiServices {
   final NetworkClient client;
