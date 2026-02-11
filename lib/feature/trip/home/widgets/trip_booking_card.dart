@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:playground_flutter_project/designsystem/dimensions/app_spacing.dart';
-
-import 'package:playground_flutter_project/designsystem/theme/colors/color_pallet.dart';
 import 'package:playground_flutter_project/designsystem/extensions/theme_context_extension.dart';
 import 'package:playground_flutter_project/ui/components/app_text.dart';
 import 'package:playground_flutter_project/ui/components/button/app_filled_button.dart';
 import 'package:playground_flutter_project/ui/components/button/app_outline_button.dart';
 import 'package:playground_flutter_project/ui/components/base/app_button.dart';
 import 'package:playground_flutter_project/ui/components/dashed_divider.dart';
-import 'package:playground_flutter_project/ui/components/multi_color_text.dart';
 import 'package:playground_flutter_project/ui/components/spacer_box.dart';
 
 class TripBookingCard extends StatelessWidget {
@@ -28,14 +25,13 @@ class TripBookingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appColors = context.appColors;
     final strokeColors = context.strokeColors;
     final radius = context.shapeRadius;
     final spacing = context.spacingSizes;
-    final typography = context.typography;
 
     return Container(
       padding: AppSpacing.all(spacing.md),
+      margin: AppSpacing.only(top: spacing.md),
       decoration: BoxDecoration(
         color: context.backgroundColors.item,
         borderRadius: BorderRadius.circular(radius.md),
@@ -48,13 +44,13 @@ class TripBookingCard extends StatelessWidget {
           _buildCoachInfo(context),
           SpacerBox(height: spacing.sm),
           DashedDivider(
-            color: strokeColors.secondary, // Placeholder for subtle divider
+            color: strokeColors.primary, // Placeholder for subtle divider
           ),
           SpacerBox(height: spacing.sm),
           _buildTimeAndDate(context),
           SpacerBox(height: spacing.sm),
           DashedDivider(
-            color: strokeColors.secondary, // Placeholder for subtle divider
+            color: strokeColors.primary, // Placeholder for subtle divider
           ),
           SpacerBox(height: spacing.sm),
           _buildRoute(context),
@@ -68,37 +64,42 @@ class TripBookingCard extends StatelessWidget {
   Widget _buildHeader(BuildContext context) {
     final backgroundColor = context.backgroundColors;
     final textColors = context.textColors;
+    final spacing = context.spacingSizes;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Expanded(
           child: Wrap(
-            spacing: 8.w,
-            runSpacing: 8.h,
+            spacing: spacing.sm,
+            runSpacing: spacing.sm,
             children: [
               _buildBadge(
                 context,
                 "Available 20",
-                backgroundColor.item,
-                textColors.info,
+                backgroundColor.jungleGreen,
+                textColors.jungleGreen,
               ),
               _buildBadge(
                 context,
                 "Reserve 02/00",
-                backgroundColor.item,
-                textColors.info,
+                backgroundColor.turquoise,
+                textColors.turquoise,
               ),
               _buildBadge(
                 context,
                 "Sold 16/12",
-                backgroundColor.item,
-                textColors.info,
+                backgroundColor.indigo,
+                textColors.indigo,
               ),
             ],
           ),
         ),
-        AppText("TK 1,450", style: context.typography.titleSmallSemiBold),
+        AppText(
+          "TK 1,450",
+          style: context.typography.titleSmallSemiBold,
+          color: textColors.navyBlue,
+        ),
       ],
     );
   }
@@ -114,7 +115,7 @@ class TripBookingCard extends StatelessWidget {
     return Container(
       padding: AppSpacing.symmetric(
         horizontal: spacing.xs,
-        vertical: spacing.xxs,
+        vertical: spacing.sm,
       ),
       decoration: BoxDecoration(
         color: bgColor,
@@ -129,12 +130,18 @@ class TripBookingCard extends StatelessWidget {
   }
 
   Widget _buildCoachInfo(BuildContext context) {
-    return MultiColorText(
-      textSpans: [
-        TextSpan(text: "Coach:", style: context.typography.bodySmallSemiBold),
-        TextSpan(
-          text: " 406 | Non-Ac | Business (Sleeper)",
-          style: context.typography.bodySmallRegular,
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        AppText("Coach: ", style: context.typography.bodySmallSemiBold),
+        Expanded(
+          child: AppText(
+            " 406 | Non-Ac | Business (Sleeper)",
+            style: context.typography.bodySmallRegular,
+            color: context.textColors.secondary,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
       ],
     );
@@ -175,7 +182,7 @@ class TripBookingCard extends StatelessWidget {
       crossAxisAlignment: alignment,
       children: [
         AppText(label, style: context.typography.bodySmallSemiBold),
-        SizedBox(height: 4.h),
+        SpacerBox(height: context.spacingSizes.sm),
         AppText(
           value,
           style: context.typography.bodySmallMedium,
@@ -192,8 +199,9 @@ class TripBookingCard extends StatelessWidget {
         AppText("Route: ", style: context.typography.bodySmallSemiBold),
         Expanded(
           child: AppText(
-            "Nilphamari - Rangpur - Bogura - Sirajganj-Tangail-C..",
+            "Nilphamari - Rangpur - Bogura - Sirajganj-Tangail-C-Nilphamari - Rangpur - Bogura - Sirajganj-Tangail-C",
             style: context.typography.bodySmallRegular,
+            color: context.textColors.secondary,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
@@ -204,6 +212,7 @@ class TripBookingCard extends StatelessWidget {
 
   Widget _buildActions(BuildContext context) {
     final spacing = context.spacingSizes;
+    final iconSize = context.iconSizes;
 
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
@@ -213,14 +222,14 @@ class TripBookingCard extends StatelessWidget {
           AppOutlineButton(
             label: "Trip Pass",
             onPressed: () {},
-            leadingIcon: Icon(Icons.check, size: 12.w),
+            leadingIcon: Icon(Icons.check, size: iconSize.xs),
             size: AppButtonSize.small,
           ),
           SpacerBox(width: spacing.md),
           AppOutlineButton(
             label: "Challan",
             onPressed: () {},
-            trailingIcon: Icon(Icons.list_alt, size: 12.w),
+            trailingIcon: Icon(Icons.list_alt, size: iconSize.xs),
             size: AppButtonSize.small,
           ),
           SpacerBox(width: spacing.md),

@@ -17,8 +17,12 @@ final class TextColor extends ThemeExtension<TextColor>
   /// The text color used to indicate error.
   final Color error;
 
-  final Color violet;
+  final Color indigo;
   final Color info;
+
+  final Color jungleGreen;
+  final Color turquoise;
+  final Color navyBlue;
 
   TextColor._({
     required this.primary,
@@ -26,8 +30,11 @@ final class TextColor extends ThemeExtension<TextColor>
     required this.white,
     required this.tertiary,
     required this.error,
-    required this.violet,
+    required this.indigo,
     required this.info,
+    required this.jungleGreen,
+    required this.turquoise,
+    required this.navyBlue,
   });
 
   @override
@@ -39,6 +46,9 @@ final class TextColor extends ThemeExtension<TextColor>
     Color? tertiaryTextColor,
     Color? violetTextColor,
     Color? infoTextColor,
+    Color? jungleGreen,
+    Color? turquoise,
+    Color? navyBlue,
   }) {
     return copyWithList([
       primaryTextColor,
@@ -48,6 +58,9 @@ final class TextColor extends ThemeExtension<TextColor>
       errorTextColor,
       violetTextColor,
       infoTextColor,
+      jungleGreen,
+      turquoise,
+      navyBlue,
     ]);
   }
 
@@ -58,8 +71,11 @@ final class TextColor extends ThemeExtension<TextColor>
     white,
     tertiary,
     error,
-    violet,
+    indigo,
     info,
+    jungleGreen,
+    turquoise,
+    navyBlue,
   ];
 
   @override
@@ -70,28 +86,37 @@ final class TextColor extends ThemeExtension<TextColor>
       white: colors[2],
       tertiary: colors[3],
       error: colors[4],
-      violet: colors[5],
+      indigo: colors[5],
       info: colors[6],
+      jungleGreen: colors[7],
+      turquoise: colors[8],
+      navyBlue: colors[9],
     );
   }
 
   static final _lightThemeColor = TextColor._(
-    primary: ColorPallet.neutral.shade900,
-    secondary: ColorPallet.primary.shade300,
-    tertiary: ColorPallet.primary.shade100,
+    primary: ColorPallet.navyBlue.shade600,
+    secondary: ColorPallet.navyBlue.shade300,
+    tertiary: ColorPallet.navyBlue.shade100,
     white: ColorPallet.white,
     error: ColorPallet.error.shade500,
-    violet: ColorPallet.indigo.shade500,
+    indigo: ColorPallet.indigo.shade500,
     info: ColorPallet.info.shade500,
+    jungleGreen: ColorPallet.jungleGreen.shade500,
+    turquoise: ColorPallet.turquoise.shade500,
+    navyBlue: ColorPallet.navyBlue.shade500,
   );
 
   static final _darkThemeColor = TextColor._(
-    primary: ColorPallet.primary.shade900,
-    secondary: ColorPallet.primary.shade300,
-    tertiary: ColorPallet.primary.shade100,
+    primary: ColorPallet.navyBlue.shade600,
+    secondary: ColorPallet.navyBlue.shade300,
+    tertiary: ColorPallet.navyBlue.shade100,
     white: ColorPallet.white,
     error: ColorPallet.error.shade500,
-    violet: ColorPallet.indigo.shade500,
+    indigo: ColorPallet.indigo.shade500,
     info: ColorPallet.info.shade500,
+    jungleGreen: ColorPallet.jungleGreen.shade500,
+    turquoise: ColorPallet.turquoise.shade500,
+    navyBlue: ColorPallet.navyBlue.shade500,
   );
 }

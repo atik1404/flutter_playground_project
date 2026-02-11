@@ -199,6 +199,45 @@ final class ColorPallet {
     900: Color(0xFF5A10B3),
   });
 
+  static const MaterialColor jungleGreen = MaterialColor(0xFF228E57, {
+    50: Color(0xFFE4F2E8),
+    100: Color(0xFFBCDEC5),
+    200: Color(0xFF90C9A0),
+    300: Color(0xFF64B37A),
+    400: Color(0xFF43A368),
+    500: Color(0xFF228E57),
+    600: Color(0xFF1E864F),
+    700: Color(0xFF197B46),
+    800: Color(0xFF14713C),
+    900: Color(0xFF0B5F2C),
+  });
+
+  static const MaterialColor turquoise = MaterialColor(0xFF00C0B8, {
+    50: Color(0xFFE0F7F6),
+    100: Color(0xFFB3EBE9),
+    200: Color(0xFF80DED9),
+    300: Color(0xFF4DD0CA),
+    400: Color(0xFF26C6C1),
+    500: Color(0xFF00C0B8),
+    600: Color(0xFF00B3AB),
+    700: Color(0xFF00A39C),
+    800: Color(0xFF00938D),
+    900: Color(0xFF007670),
+  });
+
+  static const MaterialColor navyBlue = MaterialColor(0xFF33396C, {
+    50: Color(0xFF8F92AE),
+    100: Color(0xFF8588A7),
+    200: Color(0xFF707498),
+    300: Color(0xFF5C6189),
+    400: Color(0xFF474D7B),
+    500: Color(0xFF33396C),
+    600: Color(0xFF2E3361),
+    700: Color(0xFF292E56),
+    800: Color(0xFF24284C),
+    900: Color(0xFF1F2241),
+  });
+
   // Common
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);

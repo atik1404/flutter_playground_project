@@ -14,7 +14,7 @@ final class BorderColor extends ThemeExtension<BorderColor>
   /// The border color used when disabled.
   final Color disable;
 
-  final Color violet;
+  final Color indigo;
   final Color info;
 
   BorderColor._({
@@ -22,7 +22,7 @@ final class BorderColor extends ThemeExtension<BorderColor>
     required this.secondary,
     required this.error,
     required this.disable,
-    required this.violet,
+    required this.indigo,
     required this.info,
   });
 
@@ -51,7 +51,7 @@ final class BorderColor extends ThemeExtension<BorderColor>
     secondary,
     error,
     disable,
-    violet,
+    indigo,
     info,
   ];
 
@@ -62,26 +62,26 @@ final class BorderColor extends ThemeExtension<BorderColor>
       secondary: colors[1],
       error: colors[2],
       disable: colors[3],
-      violet: colors[4],
+      indigo: colors[4],
       info: colors[5],
     );
   }
 
   static final _lightThemeColor = BorderColor._(
-    primary: ColorPallet.primary.shade500,
+    primary: ColorPallet.navyBlue.shade50,
     secondary: ColorPallet.secondary.shade500,
     error: ColorPallet.error.shade500,
     disable: ColorPallet.neutral.shade300,
-    violet: ColorPallet.indigo.shade500,
+    indigo: ColorPallet.indigo.shade500,
     info: ColorPallet.info.shade500,
   );
 
   static final _darkThemeColor = BorderColor._(
-    primary: ColorPallet.primary.shade500,
+    primary: ColorPallet.navyBlue.shade50,
     secondary: ColorPallet.secondary.shade500,
     error: ColorPallet.error.shade500,
     disable: ColorPallet.neutral.shade300,
-    violet: ColorPallet.indigo.shade500,
+    indigo: ColorPallet.indigo.shade500,
     info: ColorPallet.info.shade500,
   );
 }

@@ -36,9 +36,9 @@ class DaySelector extends StatelessWidget {
             label: AppStrings.labelPrevious,
             icon: AppIcons.icLeftArrawAngle,
             isActive: false,
-            borderColor: borderColor.violet,
-            textColor: textColor.violet,
-            backgroundColor: backgroundColor.violet,
+            borderColor: borderColor.indigo,
+            textColor: textColor.indigo,
+            backgroundColor: backgroundColor.indigo,
           ),
 
           // Today's Button
@@ -65,7 +65,7 @@ class DaySelector extends StatelessWidget {
           Container(
             padding: AppSpacing.all(spacing.xs),
             decoration: BoxDecoration(
-              color: backgroundColor.violet,
+              color: backgroundColor.indigo,
               borderRadius: BorderRadius.circular(shapes.sm),
             ),
             child: SvgPicture.asset(

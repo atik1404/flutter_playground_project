@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:playground_flutter_project/designsystem/extensions/theme_context_extension.dart';
 
 /// A wrapper around [Text] and [RichText] that provides a consistent API for
 /// styling and layout within the application.
@@ -150,7 +151,7 @@ class AppText extends StatelessWidget {
     final effectiveStyle = themeStyle
         .merge(style)
         .copyWith(
-          color: color,
+          color: color ?? context.textColors.primary,
           fontSize: fontSize,
           fontWeight: fontWeight,
           height: height,
