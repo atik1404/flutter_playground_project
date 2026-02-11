@@ -33,9 +33,13 @@ Future<void> initDi() async {
 
   await registerAuthUseCaseModule();
 
+  await registerTripUseCaseModule();
+
   await registerRepositoryModule();
 
   await registerApiServiceModule();
 
   await registerAuthMapperModule();
+
+  await registerTripMapperModule();
 }
