@@ -7,6 +7,7 @@ Future<void> registerRepositoryModule() async {
     () => AuthRepoImpl(
       authApiServices: di.get(),
       loginApiMapper: di.get(),
+      profileApiMapper: di.get(),
     ),
   );
 

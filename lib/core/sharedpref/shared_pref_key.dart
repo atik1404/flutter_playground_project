@@ -9,10 +9,12 @@ final class SharedPrefKey {
   static const String introScreenVisibility = 'is_intro_screen_visible';
 
   //profile related keys
-  static const String userId = 'user_id';
+  static const String countermanId = 'countermanId';
   static const String fullName = 'full_name';
   static const String userEmail = 'user_email';
   static const String userProfileImage = 'user_profile_image';
   static const String userRole = 'user_role';
   static const String avatar = 'avatar';
+  static const String operatorId = 'operator_id';
+  static const String operatorName = 'operator_name';
 }
