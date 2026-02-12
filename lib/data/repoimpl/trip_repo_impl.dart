@@ -17,7 +17,7 @@ final class TripRepoImpl extends TripsRepository {
        _tripsApiMapper = tripsApiMapper;
 
   @override
-  Future<Result<TripApiEntity>> fetchTrips(TripsApiParams params) async {
+  Future<Result<List<TripApiEntity>>> fetchTrips(TripsApiParams params) async {
     final response = await _tripApiServices.fetchTrips(params);
 
     return ResponseTransformer().transform(

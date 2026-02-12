@@ -3,5 +3,5 @@ import 'package:playground_flutter_project/domain/entities/apientity/trip/trip_a
 import 'package:playground_flutter_project/domain/entities/params/trip/trips_api_params.dart';
 
 abstract class TripsRepository {
-  Future<Result<TripApiEntity>> fetchTrips(TripsApiParams params);
+  Future<Result<List<TripApiEntity>>> fetchTrips(TripsApiParams params);
 }

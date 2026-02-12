@@ -5,13 +5,13 @@ import 'package:playground_flutter_project/domain/entities/params/trip/trips_api
 import 'package:playground_flutter_project/domain/repositories/trips_repository.dart';
 
 final class FetchTripsApiUsecase
-    implements ApiUseCase<TripsApiParams, TripApiEntity> {
+    implements ApiUseCase<TripsApiParams, List<TripApiEntity>> {
   final TripsRepository _repository;
 
   const FetchTripsApiUsecase(this._repository);
 
   @override
-  Future<Result<TripApiEntity>> invoke(TripsApiParams params) async {
+  Future<Result<List<TripApiEntity>>> invoke(TripsApiParams params) async {
     final result = await _repository.fetchTrips(params);
 
     return result;
