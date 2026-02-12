@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$LoginState {
 
- FormzSubmissionStatus get status; PhoneValidator get email; PasswordValidator get password; bool get isValid; bool get obscurePassword; String get apiErrorMsg; dynamic get emailValidationError; dynamic get passwordValidationError;
+ FormzSubmissionStatus get status; PhoneValidator get email; PasswordValidator get password; bool get isValid; bool get isProfileApiSuccess; bool get isProfileApiFailed; bool get obscurePassword; String get toastMessage; String get errorMessage; dynamic get emailValidationError; dynamic get passwordValidationError;
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $LoginStateCopyWith<LoginState> get copyWith => _$LoginStateCopyWithImpl<LoginSt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginState&&(identical(other.status, status) || other.status == status)&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&(identical(other.isValid, isValid) || other.isValid == isValid)&&(identical(other.obscurePassword, obscurePassword) || other.obscurePassword == obscurePassword)&&(identical(other.apiErrorMsg, apiErrorMsg) || other.apiErrorMsg == apiErrorMsg)&&const DeepCollectionEquality().equals(other.emailValidationError, emailValidationError)&&const DeepCollectionEquality().equals(other.passwordValidationError, passwordValidationError));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoginState&&(identical(other.status, status) || other.status == status)&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&(identical(other.isValid, isValid) || other.isValid == isValid)&&(identical(other.isProfileApiSuccess, isProfileApiSuccess) || other.isProfileApiSuccess == isProfileApiSuccess)&&(identical(other.isProfileApiFailed, isProfileApiFailed) || other.isProfileApiFailed == isProfileApiFailed)&&(identical(other.obscurePassword, obscurePassword) || other.obscurePassword == obscurePassword)&&(identical(other.toastMessage, toastMessage) || other.toastMessage == toastMessage)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&const DeepCollectionEquality().equals(other.emailValidationError, emailValidationError)&&const DeepCollectionEquality().equals(other.passwordValidationError, passwordValidationError));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,email,password,isValid,obscurePassword,apiErrorMsg,const DeepCollectionEquality().hash(emailValidationError),const DeepCollectionEquality().hash(passwordValidationError));
+int get hashCode => Object.hash(runtimeType,status,email,password,isValid,isProfileApiSuccess,isProfileApiFailed,obscurePassword,toastMessage,errorMessage,const DeepCollectionEquality().hash(emailValidationError),const DeepCollectionEquality().hash(passwordValidationError));
 
 @override
 String toString() {
-  return 'LoginState(status: $status, email: $email, password: $password, isValid: $isValid, obscurePassword: $obscurePassword, apiErrorMsg: $apiErrorMsg, emailValidationError: $emailValidationError, passwordValidationError: $passwordValidationError)';
+  return 'LoginState(status: $status, email: $email, password: $password, isValid: $isValid, isProfileApiSuccess: $isProfileApiSuccess, isProfileApiFailed: $isProfileApiFailed, obscurePassword: $obscurePassword, toastMessage: $toastMessage, errorMessage: $errorMessage, emailValidationError: $emailValidationError, passwordValidationError: $passwordValidationError)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $LoginStateCopyWith<$Res>  {
   factory $LoginStateCopyWith(LoginState value, $Res Function(LoginState) _then) = _$LoginStateCopyWithImpl;
 @useResult
 $Res call({
- FormzSubmissionStatus status, PhoneValidator email, PasswordValidator password, bool isValid, bool obscurePassword, String apiErrorMsg, dynamic emailValidationError, dynamic passwordValidationError
+ FormzSubmissionStatus status, PhoneValidator email, PasswordValidator password, bool isValid, bool isProfileApiSuccess, bool isProfileApiFailed, bool obscurePassword, String toastMessage, String errorMessage, dynamic emailValidationError, dynamic passwordValidationError
 });
 
 
@@ -62,14 +62,17 @@ class _$LoginStateCopyWithImpl<$Res>
 
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? email = null,Object? password = null,Object? isValid = null,Object? obscurePassword = null,Object? apiErrorMsg = null,Object? emailValidationError = freezed,Object? passwordValidationError = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? email = null,Object? password = null,Object? isValid = null,Object? isProfileApiSuccess = null,Object? isProfileApiFailed = null,Object? obscurePassword = null,Object? toastMessage = null,Object? errorMessage = null,Object? emailValidationError = freezed,Object? passwordValidationError = freezed,}) {
   return _then(_self.copyWith(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as FormzSubmissionStatus,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as PhoneValidator,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
 as PasswordValidator,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
+as bool,isProfileApiSuccess: null == isProfileApiSuccess ? _self.isProfileApiSuccess : isProfileApiSuccess // ignore: cast_nullable_to_non_nullable
+as bool,isProfileApiFailed: null == isProfileApiFailed ? _self.isProfileApiFailed : isProfileApiFailed // ignore: cast_nullable_to_non_nullable
 as bool,obscurePassword: null == obscurePassword ? _self.obscurePassword : obscurePassword // ignore: cast_nullable_to_non_nullable
-as bool,apiErrorMsg: null == apiErrorMsg ? _self.apiErrorMsg : apiErrorMsg // ignore: cast_nullable_to_non_nullable
+as bool,toastMessage: null == toastMessage ? _self.toastMessage : toastMessage // ignore: cast_nullable_to_non_nullable
+as String,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String,emailValidationError: freezed == emailValidationError ? _self.emailValidationError : emailValidationError // ignore: cast_nullable_to_non_nullable
 as dynamic,passwordValidationError: freezed == passwordValidationError ? _self.passwordValidationError : passwordValidationError // ignore: cast_nullable_to_non_nullable
 as dynamic,
@@ -157,10 +160,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( FormzSubmissionStatus status,  PhoneValidator email,  PasswordValidator password,  bool isValid,  bool obscurePassword,  String apiErrorMsg,  dynamic emailValidationError,  dynamic passwordValidationError)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( FormzSubmissionStatus status,  PhoneValidator email,  PasswordValidator password,  bool isValid,  bool isProfileApiSuccess,  bool isProfileApiFailed,  bool obscurePassword,  String toastMessage,  String errorMessage,  dynamic emailValidationError,  dynamic passwordValidationError)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _LoginState() when $default != null:
-return $default(_that.status,_that.email,_that.password,_that.isValid,_that.obscurePassword,_that.apiErrorMsg,_that.emailValidationError,_that.passwordValidationError);case _:
+return $default(_that.status,_that.email,_that.password,_that.isValid,_that.isProfileApiSuccess,_that.isProfileApiFailed,_that.obscurePassword,_that.toastMessage,_that.errorMessage,_that.emailValidationError,_that.passwordValidationError);case _:
   return orElse();
 
 }
@@ -178,10 +181,10 @@ return $default(_that.status,_that.email,_that.password,_that.isValid,_that.obsc
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( FormzSubmissionStatus status,  PhoneValidator email,  PasswordValidator password,  bool isValid,  bool obscurePassword,  String apiErrorMsg,  dynamic emailValidationError,  dynamic passwordValidationError)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( FormzSubmissionStatus status,  PhoneValidator email,  PasswordValidator password,  bool isValid,  bool isProfileApiSuccess,  bool isProfileApiFailed,  bool obscurePassword,  String toastMessage,  String errorMessage,  dynamic emailValidationError,  dynamic passwordValidationError)  $default,) {final _that = this;
 switch (_that) {
 case _LoginState():
-return $default(_that.status,_that.email,_that.password,_that.isValid,_that.obscurePassword,_that.apiErrorMsg,_that.emailValidationError,_that.passwordValidationError);case _:
+return $default(_that.status,_that.email,_that.password,_that.isValid,_that.isProfileApiSuccess,_that.isProfileApiFailed,_that.obscurePassword,_that.toastMessage,_that.errorMessage,_that.emailValidationError,_that.passwordValidationError);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -198,10 +201,10 @@ return $default(_that.status,_that.email,_that.password,_that.isValid,_that.obsc
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( FormzSubmissionStatus status,  PhoneValidator email,  PasswordValidator password,  bool isValid,  bool obscurePassword,  String apiErrorMsg,  dynamic emailValidationError,  dynamic passwordValidationError)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( FormzSubmissionStatus status,  PhoneValidator email,  PasswordValidator password,  bool isValid,  bool isProfileApiSuccess,  bool isProfileApiFailed,  bool obscurePassword,  String toastMessage,  String errorMessage,  dynamic emailValidationError,  dynamic passwordValidationError)?  $default,) {final _that = this;
 switch (_that) {
 case _LoginState() when $default != null:
-return $default(_that.status,_that.email,_that.password,_that.isValid,_that.obscurePassword,_that.apiErrorMsg,_that.emailValidationError,_that.passwordValidationError);case _:
+return $default(_that.status,_that.email,_that.password,_that.isValid,_that.isProfileApiSuccess,_that.isProfileApiFailed,_that.obscurePassword,_that.toastMessage,_that.errorMessage,_that.emailValidationError,_that.passwordValidationError);case _:
   return null;
 
 }
@@ -213,15 +216,18 @@ return $default(_that.status,_that.email,_that.password,_that.isValid,_that.obsc
 
 
 class _LoginState implements LoginState {
-  const _LoginState({this.status = FormzSubmissionStatus.initial, this.email = const PhoneValidator.pure(), this.password = const PasswordValidator.pure(), this.isValid = false, this.obscurePassword = true, this.apiErrorMsg = '', this.emailValidationError = '', this.passwordValidationError = ''});
+  const _LoginState({this.status = FormzSubmissionStatus.initial, this.email = const PhoneValidator.pure(), this.password = const PasswordValidator.pure(), this.isValid = false, this.isProfileApiSuccess = false, this.isProfileApiFailed = false, this.obscurePassword = true, this.toastMessage = '', this.errorMessage = '', this.emailValidationError = '', this.passwordValidationError = ''});
   
 
 @override@JsonKey() final  FormzSubmissionStatus status;
 @override@JsonKey() final  PhoneValidator email;
 @override@JsonKey() final  PasswordValidator password;
 @override@JsonKey() final  bool isValid;
+@override@JsonKey() final  bool isProfileApiSuccess;
+@override@JsonKey() final  bool isProfileApiFailed;
 @override@JsonKey() final  bool obscurePassword;
-@override@JsonKey() final  String apiErrorMsg;
+@override@JsonKey() final  String toastMessage;
+@override@JsonKey() final  String errorMessage;
 @override@JsonKey() final  dynamic emailValidationError;
 @override@JsonKey() final  dynamic passwordValidationError;
 
@@ -235,16 +241,16 @@ _$LoginStateCopyWith<_LoginState> get copyWith => __$LoginStateCopyWithImpl<_Log
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LoginState&&(identical(other.status, status) || other.status == status)&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&(identical(other.isValid, isValid) || other.isValid == isValid)&&(identical(other.obscurePassword, obscurePassword) || other.obscurePassword == obscurePassword)&&(identical(other.apiErrorMsg, apiErrorMsg) || other.apiErrorMsg == apiErrorMsg)&&const DeepCollectionEquality().equals(other.emailValidationError, emailValidationError)&&const DeepCollectionEquality().equals(other.passwordValidationError, passwordValidationError));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LoginState&&(identical(other.status, status) || other.status == status)&&(identical(other.email, email) || other.email == email)&&(identical(other.password, password) || other.password == password)&&(identical(other.isValid, isValid) || other.isValid == isValid)&&(identical(other.isProfileApiSuccess, isProfileApiSuccess) || other.isProfileApiSuccess == isProfileApiSuccess)&&(identical(other.isProfileApiFailed, isProfileApiFailed) || other.isProfileApiFailed == isProfileApiFailed)&&(identical(other.obscurePassword, obscurePassword) || other.obscurePassword == obscurePassword)&&(identical(other.toastMessage, toastMessage) || other.toastMessage == toastMessage)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage)&&const DeepCollectionEquality().equals(other.emailValidationError, emailValidationError)&&const DeepCollectionEquality().equals(other.passwordValidationError, passwordValidationError));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,email,password,isValid,obscurePassword,apiErrorMsg,const DeepCollectionEquality().hash(emailValidationError),const DeepCollectionEquality().hash(passwordValidationError));
+int get hashCode => Object.hash(runtimeType,status,email,password,isValid,isProfileApiSuccess,isProfileApiFailed,obscurePassword,toastMessage,errorMessage,const DeepCollectionEquality().hash(emailValidationError),const DeepCollectionEquality().hash(passwordValidationError));
 
 @override
 String toString() {
-  return 'LoginState(status: $status, email: $email, password: $password, isValid: $isValid, obscurePassword: $obscurePassword, apiErrorMsg: $apiErrorMsg, emailValidationError: $emailValidationError, passwordValidationError: $passwordValidationError)';
+  return 'LoginState(status: $status, email: $email, password: $password, isValid: $isValid, isProfileApiSuccess: $isProfileApiSuccess, isProfileApiFailed: $isProfileApiFailed, obscurePassword: $obscurePassword, toastMessage: $toastMessage, errorMessage: $errorMessage, emailValidationError: $emailValidationError, passwordValidationError: $passwordValidationError)';
 }
 
 
@@ -255,7 +261,7 @@ abstract mixin class _$LoginStateCopyWith<$Res> implements $LoginStateCopyWith<$
   factory _$LoginStateCopyWith(_LoginState value, $Res Function(_LoginState) _then) = __$LoginStateCopyWithImpl;
 @override @useResult
 $Res call({
- FormzSubmissionStatus status, PhoneValidator email, PasswordValidator password, bool isValid, bool obscurePassword, String apiErrorMsg, dynamic emailValidationError, dynamic passwordValidationError
+ FormzSubmissionStatus status, PhoneValidator email, PasswordValidator password, bool isValid, bool isProfileApiSuccess, bool isProfileApiFailed, bool obscurePassword, String toastMessage, String errorMessage, dynamic emailValidationError, dynamic passwordValidationError
 });
 
 
@@ -272,14 +278,17 @@ class __$LoginStateCopyWithImpl<$Res>
 
 /// Create a copy of LoginState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? email = null,Object? password = null,Object? isValid = null,Object? obscurePassword = null,Object? apiErrorMsg = null,Object? emailValidationError = freezed,Object? passwordValidationError = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? email = null,Object? password = null,Object? isValid = null,Object? isProfileApiSuccess = null,Object? isProfileApiFailed = null,Object? obscurePassword = null,Object? toastMessage = null,Object? errorMessage = null,Object? emailValidationError = freezed,Object? passwordValidationError = freezed,}) {
   return _then(_LoginState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as FormzSubmissionStatus,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as PhoneValidator,password: null == password ? _self.password : password // ignore: cast_nullable_to_non_nullable
 as PasswordValidator,isValid: null == isValid ? _self.isValid : isValid // ignore: cast_nullable_to_non_nullable
+as bool,isProfileApiSuccess: null == isProfileApiSuccess ? _self.isProfileApiSuccess : isProfileApiSuccess // ignore: cast_nullable_to_non_nullable
+as bool,isProfileApiFailed: null == isProfileApiFailed ? _self.isProfileApiFailed : isProfileApiFailed // ignore: cast_nullable_to_non_nullable
 as bool,obscurePassword: null == obscurePassword ? _self.obscurePassword : obscurePassword // ignore: cast_nullable_to_non_nullable
-as bool,apiErrorMsg: null == apiErrorMsg ? _self.apiErrorMsg : apiErrorMsg // ignore: cast_nullable_to_non_nullable
+as bool,toastMessage: null == toastMessage ? _self.toastMessage : toastMessage // ignore: cast_nullable_to_non_nullable
+as String,errorMessage: null == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String,emailValidationError: freezed == emailValidationError ? _self.emailValidationError : emailValidationError // ignore: cast_nullable_to_non_nullable
 as dynamic,passwordValidationError: freezed == passwordValidationError ? _self.passwordValidationError : passwordValidationError // ignore: cast_nullable_to_non_nullable
 as dynamic,

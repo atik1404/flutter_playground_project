@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:playground_flutter_project/common/logger/app_logger.dart';
 import 'package:playground_flutter_project/common/logger/app_toast.dart';
 import 'package:playground_flutter_project/designsystem/dimensions/app_spacing.dart';
 import 'package:playground_flutter_project/designsystem/extensions/theme_context_extension.dart';
@@ -28,9 +27,8 @@ class _LoginScreenState extends State<LoginScreen> {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state.status.isFailure) {
-          AppLogger.log('Login failed: ${state.apiErrorMsg}');
           AppToast.toast(
-            message: state.apiErrorMsg,
+            message: state.toastMessage,
             toastType: ToastType.error,
           );
         }

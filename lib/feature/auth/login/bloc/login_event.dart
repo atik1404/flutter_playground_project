@@ -8,4 +8,5 @@ class LoginEvent with _$LoginEvent {
   const factory LoginEvent.passwordChanged(String password) = PasswordChanged;
   const factory LoginEvent.submitted() = Submitted;
   const factory LoginEvent.obscurePasswordToggled() = ObscurePasswordToggled;
+  const factory LoginEvent.fetchProfile() = FetchProfile;
 }

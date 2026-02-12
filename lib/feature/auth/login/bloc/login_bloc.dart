@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:playground_flutter_project/designsystem/resources/app_strings.dart';
 import 'package:playground_flutter_project/domain/entities/params/auth/login_params.dart';
+import 'package:playground_flutter_project/domain/usecase/auth/fetch_profile_api_usecase.dart';
 import 'package:playground_flutter_project/domain/usecase/auth/post_login_api_usecase.dart';
 import 'package:playground_flutter_project/feature/auth/login/bloc/login_event.dart';
 import 'package:playground_flutter_project/feature/auth/login/bloc/login_state.dart';
@@ -10,14 +11,19 @@ import 'package:playground_flutter_project/feature/auth/login/models/password_va
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final PostLoginApiUsecase _postLoginApiUsecase;
+  final FetchProfileApiUseCase _fetchProfileApiUseCase;
 
-  LoginBloc({required PostLoginApiUsecase postLoginApiUsecase})
-    : _postLoginApiUsecase = postLoginApiUsecase,
-      super(const LoginState()) {
+  LoginBloc({
+    required PostLoginApiUsecase postLoginApiUsecase,
+    required FetchProfileApiUseCase fetchProfileApiUseCase,
+  }) : _postLoginApiUsecase = postLoginApiUsecase,
+       _fetchProfileApiUseCase = fetchProfileApiUseCase,
+       super(const LoginState()) {
     on<PhoneChanged>(_onPhoneChanged);
     on<PasswordChanged>(_onPasswordChanged);
     on<Submitted>(_onSubmitted);
     on<ObscurePasswordToggled>(_onObscurePasswordToggled);
+    on<FetchProfile>(_onFetchProfile);
   }
 
   void _onPhoneChanged(PhoneChanged event, Emitter<LoginState> emit) {
@@ -62,7 +68,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(
       state.copyWith(
         status: FormzSubmissionStatus.inProgress,
-        apiErrorMsg: '',
+        toastMessage: '',
         emailValidationError: '',
         passwordValidationError: '',
       ),
@@ -75,12 +81,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     result.when(
       success: (data) {
         emit(state.copyWith(status: FormzSubmissionStatus.success));
+        add(const FetchProfile());
       },
       failure: (error) {
         emit(
           state.copyWith(
             status: FormzSubmissionStatus.failure,
-            apiErrorMsg: error.message,
+            toastMessage: error.message,
           ),
         );
       },
@@ -92,5 +99,33 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     Emitter<LoginState> emit,
   ) {
     emit(state.copyWith(obscurePassword: !state.obscurePassword));
+  }
+
+  Future<void> _onFetchProfile(
+    FetchProfile event,
+    Emitter<LoginState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        status: FormzSubmissionStatus.inProgress,
+        isProfileApiSuccess: false,
+        isProfileApiFailed: false,
+      ),
+    );
+
+    final result = await _fetchProfileApiUseCase.invoke();
+
+    result.when(
+      success: (data) {
+        emit(
+          state.copyWith(isProfileApiSuccess: true, isProfileApiFailed: false),
+        );
+      },
+      failure: (error) {
+        emit(
+          state.copyWith(isProfileApiSuccess: false, isProfileApiFailed: true),
+        );
+      },
+    );
   }
 }
