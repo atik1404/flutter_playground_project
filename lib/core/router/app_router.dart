@@ -15,7 +15,7 @@ final GlobalKey<NavigatorState> rootNavKey = GlobalKey<NavigatorState>();
 
 GoRouter goRouter() {
   return GoRouter(
-    initialLocation: AppRoutesName.homeScreen,
+    initialLocation: AppRoutesName.splashScreen,
     navigatorKey: rootNavKey,
     routes: [...routers.expand((r) => r.routes)],
     errorBuilder: (context, state) {
