@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:playground_flutter_project/designsystem/theme/app_theme_data.dart';
 import 'package:playground_flutter_project/designsystem/extensions/theme_context_extension.dart';
 
 class DashedDivider extends StatelessWidget {
@@ -20,7 +19,10 @@ class DashedDivider extends StatelessWidget {
       builder: (BuildContext context, BoxConstraints constraints) {
         final boxWidth = constraints.constrainWidth();
         final dashCount = (boxWidth / (2 * dashWidth)).floor();
+
         return Flex(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          direction: Axis.horizontal,
           children: List.generate(dashCount, (_) {
             return SizedBox(
               width: dashWidth,
@@ -32,8 +34,6 @@ class DashedDivider extends StatelessWidget {
               ),
             );
           }),
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          direction: Axis.horizontal,
         );
       },
     );

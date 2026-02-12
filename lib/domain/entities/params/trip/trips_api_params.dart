@@ -1,7 +1,7 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:playground_flutter_project/domain/entities/params/api_params_annotation.dart';
 part 'trips_api_params.g.dart';
 
-@JsonSerializable(explicitToJson: true)
+@apiParamsAnnotation
 class TripsApiParams {
   final int page;
   final int limit;

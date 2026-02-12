@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:playground_flutter_project/designsystem/extensions/theme_context_extension.dart';
 import 'package:playground_flutter_project/ui/components/base/app_button.dart';
 
 /// An outlined button widget that uses [AppButton.outline].

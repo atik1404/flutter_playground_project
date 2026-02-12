@@ -8,18 +8,16 @@ class ProfileApiMapper extends BaseMapper<UserModel, ProfileApiEnity> {
     // Get operator info
     final operatorId = response.operator?.id ?? "";
     final operatorName = response.operator?.name ?? "";
+    final routes = response.routes ?? [];
 
     // Get route info (first route if available)
-    final routeId = (response.routes != null && response.routes!.isNotEmpty)
-        ? response.routes!.first.id ?? ""
-        : "";
-    final routeName = (response.routes != null && response.routes!.isNotEmpty)
-        ? response.routes!.first.name ?? ""
-        : "";
+    final routeId = (routes.isNotEmpty) ? routes.first.id ?? "" : "";
+    final routeName = (routes.isNotEmpty) ? routes.first.name ?? "" : "";
 
     return ProfileApiEnity(
       countermanId: response.id ?? "",
-      countermanName: (response.firstName ?? "") +
+      countermanName:
+          (response.firstName ?? "") +
           (response.lastName != null ? " ${response.lastName}" : ""),
       countermanFirstName: response.firstName ?? "",
       countermanLastName: response.lastName ?? "",

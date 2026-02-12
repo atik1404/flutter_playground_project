@@ -1,7 +1,7 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:playground_flutter_project/domain/entities/params/api_params_annotation.dart';
 part 'login_params.g.dart';
 
-@JsonSerializable(explicitToJson: true)
+@apiParamsAnnotation
 class LoginParams {
   final String phone;
   final String password;
