@@ -1,5 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:get_it/get_it.dart';
+import 'package:playground_flutter_project/common/logger/app_logger.dart';
+import 'package:playground_flutter_project/core/sharedpref/shared_pref_key.dart';
+import 'package:playground_flutter_project/core/sharedpref/shared_prefs.dart';
 import 'package:playground_flutter_project/designsystem/resources/app_strings.dart';
 import 'package:playground_flutter_project/domain/entities/params/auth/login_params.dart';
 import 'package:playground_flutter_project/domain/usecase/auth/fetch_profile_api_usecase.dart';
@@ -12,6 +16,7 @@ import 'package:playground_flutter_project/feature/auth/login/models/password_va
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final PostLoginApiUsecase _postLoginApiUsecase;
   final FetchProfileApiUseCase _fetchProfileApiUseCase;
+  final SharedPrefs _sharedPrefs = GetIt.I.get<SharedPrefs>();
 
   LoginBloc({
     required PostLoginApiUsecase postLoginApiUsecase,
@@ -27,11 +32,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   void _onPhoneChanged(PhoneChanged event, Emitter<LoginState> emit) {
-    final email = PhoneValidator.dirty(event.phone);
+    final phone = PhoneValidator.dirty(event.phone);
     emit(
       state.copyWith(
-        email: email,
-        isValid: Formz.validate([email, state.password]),
+        phone: phone,
+        isValid: Formz.validate([phone, state.password]),
         emailValidationError: '',
       ),
     );
@@ -42,15 +47,15 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(
       state.copyWith(
         password: password,
-        isValid: Formz.validate([state.email, password]),
+        isValid: Formz.validate([state.phone, password]),
         passwordValidationError: '',
       ),
     );
   }
 
   Future<void> _onSubmitted(Submitted event, Emitter<LoginState> emit) async {
-    if (state.email.isNotValid) {
-      emit(state.copyWith(emailValidationError: AppStrings.errorInvalidEmail));
+    if (state.phone.isNotValid) {
+      emit(state.copyWith(emailValidationError: AppStrings.hintPhoneNumber));
 
       return;
     }
@@ -75,7 +80,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     );
 
     final result = await _postLoginApiUsecase.invoke(
-      LoginParams(phone: state.email.value, password: state.password.value),
+      LoginParams(phone: state.phone.value, password: state.password.value),
     );
 
     result.when(
@@ -105,6 +110,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     FetchProfile event,
     Emitter<LoginState> emit,
   ) async {
+    AppLogger.log(
+      "Token: ${_sharedPrefs.getString(key: SharedPrefKey.accessToken)}",
+    );
     emit(
       state.copyWith(
         status: FormzSubmissionStatus.inProgress,

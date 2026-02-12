@@ -4,13 +4,10 @@ part 'login_api_response.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class LoginApiResponse {
-  final String? access_token;
-  final String? refresh_token;
+  final String? accessToken;
+  final String? expDateTime;
 
-  const LoginApiResponse({
-    this.access_token,
-    this.refresh_token,
-  });
+  const LoginApiResponse({this.accessToken, this.expDateTime});
 
   factory LoginApiResponse.fromJson(Map<String, dynamic> json) =>
       _$LoginApiResponseFromJson(json);

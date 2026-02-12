@@ -5,6 +5,7 @@ final class SharedPrefKey {
 
   static const String accessToken = 'access_token';
   static const String refreshToken = 'refresh_token';
+  static const String expirationDateTime = 'refexpirationDateTimeresh_token';
   static const String userLoggedInStatus = 'is_logged_in';
   static const String introScreenVisibility = 'is_intro_screen_visible';
 

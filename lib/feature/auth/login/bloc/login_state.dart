@@ -9,7 +9,7 @@ part 'login_state.freezed.dart';
 abstract class LoginState with _$LoginState {
   const factory LoginState({
     @Default(FormzSubmissionStatus.initial) FormzSubmissionStatus status,
-    @Default(PhoneValidator.pure()) PhoneValidator email,
+    @Default(PhoneValidator.pure()) PhoneValidator phone,
     @Default(PasswordValidator.pure()) PasswordValidator password,
     @Default(false) bool isValid,
     @Default(false) bool isProfileApiSuccess,

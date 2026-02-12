@@ -22,9 +22,9 @@ final class AppStrings {
   static const String labelPrevious = "Previous";
   static const String labelNext = "Next";
 
-  static const String hintEmailAddress = "+8801XXXXXXXXX";
+  static const String hintPhoneNumber = "01XXXXXXXXX";
   static const String hintPassword = "Password";
 
-  static const String errorInvalidEmail = "Invalid email address";
+  static const String errorInvalidPhoneNumber = "Invalid phone number";
   static const String errorInvalidPassword = "Invalid password";
 }

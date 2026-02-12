@@ -1,9 +1,9 @@
 class LoginApiEntity {
   final String accessToken;
-  final String refreshToken;
+  final String expirationDateTime;
 
   const LoginApiEntity({
     required this.accessToken,
-    required this.refreshToken,
+    required this.expirationDateTime,
   });
 }

@@ -25,15 +25,11 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return SafeArea(
-          top: false,
-          bottom: false,
-          child: MaterialApp.router(
-            theme: AppThemeData.light(),
-            darkTheme: AppThemeData.dark(),
-            debugShowCheckedModeBanner: false,
-            routerConfig: router,
-          ),
+        return MaterialApp.router(
+          theme: AppThemeData.light(),
+          darkTheme: AppThemeData.dark(),
+          debugShowCheckedModeBanner: false,
+          routerConfig: router,
         );
       },
     );

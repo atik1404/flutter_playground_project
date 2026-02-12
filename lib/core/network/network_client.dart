@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:playground_flutter_project/common/logger/app_logger.dart';
 import 'package:playground_flutter_project/core/network/handle_api_call.dart';
 
 import 'package:playground_flutter_project/core/network/result.dart';
@@ -28,6 +29,10 @@ final class NetworkClient {
         receiveTimeout: const Duration(seconds: 20),
         contentType: 'application/json',
       ),
+    );
+
+    AppLogger.log(
+      "accessToken: ${sharedPrefs.getString(key: SharedPrefKey.accessToken)}",
     );
 
     dio.interceptors.add(

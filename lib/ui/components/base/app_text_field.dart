@@ -101,13 +101,16 @@ class _AppTextFieldState extends State<AppTextField> {
 
     return TextFormField(
       onChanged: widget.onChanged,
-      
+
       textInputAction: widget.textInputAction,
       controller: widget.controller,
       obscureText: widget.obscureText,
+      maxLength: widget.maxLength,
       // ... existing properties ...
       decoration: InputDecoration(
-        errorText: (widget.errorText?.isEmpty ?? true) ? null : widget.errorText,
+        errorText: (widget.errorText?.isEmpty ?? true)
+            ? null
+            : widget.errorText,
         hintText: widget.hintText,
         hintStyle: context.typography.bodySmallLight.copyWith(
           color: context.textFieldColors.hint,

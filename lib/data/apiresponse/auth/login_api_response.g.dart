@@ -8,12 +8,12 @@ part of 'login_api_response.dart';
 
 LoginApiResponse _$LoginApiResponseFromJson(Map<String, dynamic> json) =>
     LoginApiResponse(
-      access_token: json['access_token'] as String?,
-      refresh_token: json['refresh_token'] as String?,
+      accessToken: json['accessToken'] as String?,
+      expDateTime: json['expDateTime'] as String?,
     );
 
 Map<String, dynamic> _$LoginApiResponseToJson(LoginApiResponse instance) =>
     <String, dynamic>{
-      'access_token': instance.access_token,
-      'refresh_token': instance.refresh_token,
+      'accessToken': instance.accessToken,
+      'expDateTime': instance.expDateTime,
     };

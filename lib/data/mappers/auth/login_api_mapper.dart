@@ -8,8 +8,8 @@ class LoginApiMapper extends BaseMapper<LoginApiResponse, LoginApiEntity> {
   @override
   LoginApiEntity map(LoginApiResponse response) {
     return LoginApiEntity(
-      accessToken: response.access_token ?? "",
-      refreshToken: response.refresh_token ?? "",
+      accessToken: response.accessToken ?? "",
+      expirationDateTime: response.expDateTime ?? "",
     );
   }
 }

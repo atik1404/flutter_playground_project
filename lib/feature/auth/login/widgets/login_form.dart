@@ -44,7 +44,7 @@ class _PhoneInput extends StatelessWidget {
           onChanged: (phone) => {
             context.read<LoginBloc>().add(LoginEvent.phoneChanged(phone)),
           },
-          hintText: AppStrings.hintEmailAddress,
+          hintText: AppStrings.hintPhoneNumber,
           suffixIcon: SvgPicture.asset(
             AppIcons.icPhone,
             colorFilter: ColorFilter.mode(
@@ -52,7 +52,8 @@ class _PhoneInput extends StatelessWidget {
               BlendMode.srcIn,
             ),
           ),
-          keyboardType: TextInputType.emailAddress,
+          keyboardType: TextInputType.phone,
+          maxLength: 11,
         );
       },
     );

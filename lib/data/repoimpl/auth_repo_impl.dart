@@ -37,7 +37,10 @@ final class AuthRepoImpl extends AuthRepository {
       final token = result.data.accessToken;
       _sharedPrefs
         ..set(key: SharedPrefKey.accessToken, value: token)
-        ..set(key: SharedPrefKey.refreshToken, value: result.data.refreshToken)
+        ..set(
+          key: SharedPrefKey.refreshToken,
+          value: result.data.expirationDateTime,
+        )
         ..set(key: SharedPrefKey.userLoggedInStatus, value: true);
     }
 
