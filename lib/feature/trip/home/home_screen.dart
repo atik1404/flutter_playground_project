@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:playground_flutter_project/core/router/app_routes_name.dart';
 import 'package:playground_flutter_project/designsystem/dimensions/app_spacing.dart';
 import 'package:playground_flutter_project/designsystem/extensions/theme_context_extension.dart';
 import 'package:playground_flutter_project/feature/trip/home/bloc/home_bloc.dart';
@@ -11,6 +13,7 @@ import 'package:playground_flutter_project/ui/common/error_ui.dart';
 import 'package:playground_flutter_project/ui/common/full_screen_loader.dart';
 import 'package:playground_flutter_project/ui/components/app_scaffold.dart';
 import 'package:playground_flutter_project/ui/components/spacer_box.dart';
+import 'package:playground_flutter_project/feature/trip/booking/trip_booking_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -77,7 +80,12 @@ class _HomeScreenState extends State<HomeScreen> {
               end: spaceSize.md,
             ),
             itemBuilder: (context, index) => TripBookingCard(
-              onBookTap: () {},
+              onBookTap: () {
+                context.push(
+                  AppRoutesName.tripBookingScreen,
+                  extra: state.movies[index],
+                );
+              },
               onReferTap: () {},
               onTripPassTap: () {},
               onChallanTap: () {},

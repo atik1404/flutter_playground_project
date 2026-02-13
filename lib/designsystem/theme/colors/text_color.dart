@@ -22,6 +22,8 @@ final class TextColor extends ThemeExtension<TextColor>
 
   final Color jungleGreen;
   final Color turquoise;
+  final Color female;
+  final Color male;
   final Color navyBlue;
 
   TextColor._({
@@ -34,6 +36,8 @@ final class TextColor extends ThemeExtension<TextColor>
     required this.info,
     required this.jungleGreen,
     required this.turquoise,
+    required this.female,
+    required this.male,
     required this.navyBlue,
   });
 
@@ -48,6 +52,8 @@ final class TextColor extends ThemeExtension<TextColor>
     Color? infoTextColor,
     Color? jungleGreen,
     Color? turquoise,
+    Color? female,
+    Color? male,
     Color? navyBlue,
   }) {
     return copyWithList([
@@ -60,6 +66,8 @@ final class TextColor extends ThemeExtension<TextColor>
       infoTextColor,
       jungleGreen,
       turquoise,
+      female,
+      male,
       navyBlue,
     ]);
   }
@@ -75,6 +83,8 @@ final class TextColor extends ThemeExtension<TextColor>
     info,
     jungleGreen,
     turquoise,
+    female,
+    male,
     navyBlue,
   ];
 
@@ -90,7 +100,9 @@ final class TextColor extends ThemeExtension<TextColor>
       info: colors[6],
       jungleGreen: colors[7],
       turquoise: colors[8],
-      navyBlue: colors[9],
+      female: colors[9],
+      male: colors[10],
+      navyBlue: colors[11],
     );
   }
 
@@ -104,6 +116,8 @@ final class TextColor extends ThemeExtension<TextColor>
     info: ColorPallet.info.shade500,
     jungleGreen: ColorPallet.jungleGreen.shade500,
     turquoise: ColorPallet.turquoise.shade500,
+    female: ColorPallet.error.shade300,
+    male: ColorPallet.indigo.shade500,
     navyBlue: ColorPallet.navyBlue.shade500,
   );
 
@@ -117,6 +131,8 @@ final class TextColor extends ThemeExtension<TextColor>
     info: ColorPallet.info.shade500,
     jungleGreen: ColorPallet.jungleGreen.shade500,
     turquoise: ColorPallet.turquoise.shade500,
+    female: ColorPallet.error.shade300,
+    male: ColorPallet.indigo.shade500,
     navyBlue: ColorPallet.navyBlue.shade500,
   );
 }

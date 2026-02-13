@@ -5,4 +5,5 @@ class AppRoutesName {
   static const loginScreen = "/login";
   static const homeScreen = "/home";
   static const tripDetailsScreen = "/tripDetails";
+  static const tripBookingScreen = "/tripBooking";
 }

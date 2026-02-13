@@ -5,8 +5,14 @@ import 'package:playground_flutter_project/core/router/base_router.dart';
 import 'package:playground_flutter_project/feature/auth/login/login_router.dart';
 import 'package:playground_flutter_project/feature/auth/splash/splash_router.dart';
 import 'package:playground_flutter_project/feature/trip/home/home_router.dart';
+import 'package:playground_flutter_project/feature/trip/trip_booking_screen_router.dart';
 
-List<BaseRouter> get routers => [SplashRouter(), LoginRouter(), HomeRouter()];
+List<BaseRouter> get routers => [
+  SplashRouter(),
+  LoginRouter(),
+  HomeRouter(),
+  TripBookingScreenRouter(),
+];
 
 final GoRouter router = goRouter();
 final routeObserver = RouteObserver<ModalRoute<void>>();

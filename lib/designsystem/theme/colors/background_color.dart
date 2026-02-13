@@ -15,6 +15,8 @@ final class BackgroundColor extends ThemeExtension<BackgroundColor>
   final Color info;
   final Color jungleGreen;
   final Color turquoise;
+  final Color female;
+  final Color male;
 
   BackgroundColor._({
     required this.primary,
@@ -24,6 +26,8 @@ final class BackgroundColor extends ThemeExtension<BackgroundColor>
     required this.info,
     required this.jungleGreen,
     required this.turquoise,
+    required this.female,
+    required this.male,
   });
 
   @override
@@ -35,6 +39,8 @@ final class BackgroundColor extends ThemeExtension<BackgroundColor>
     info,
     jungleGreen,
     turquoise,
+    female,
+    male,
   ];
 
   @override
@@ -45,6 +51,8 @@ final class BackgroundColor extends ThemeExtension<BackgroundColor>
     Color? violetBackgroundColor,
     Color? infoBackgroundColor,
     Color? turquoise,
+    Color? female,
+    Color? male,
     Color? jungleGreen,
   }) {
     return copyWithList([
@@ -55,6 +63,8 @@ final class BackgroundColor extends ThemeExtension<BackgroundColor>
       infoBackgroundColor,
       jungleGreen,
       turquoise,
+      female,
+      male,
     ]);
   }
 
@@ -68,6 +78,8 @@ final class BackgroundColor extends ThemeExtension<BackgroundColor>
       info: colors[4],
       jungleGreen: colors[5],
       turquoise: colors[6],
+      female: colors[7],
+      male: colors[8],
     );
   }
 
@@ -79,6 +91,8 @@ final class BackgroundColor extends ThemeExtension<BackgroundColor>
     info: ColorPallet.info.shade50,
     jungleGreen: ColorPallet.jungleGreen.shade50,
     turquoise: ColorPallet.turquoise.shade50,
+    female: ColorPallet.error.shade50,
+    male: ColorPallet.indigo.shade50,
   );
 
   static final _darkThemeColor = BackgroundColor._(
@@ -89,5 +103,7 @@ final class BackgroundColor extends ThemeExtension<BackgroundColor>
     info: ColorPallet.info.shade50,
     jungleGreen: ColorPallet.jungleGreen.shade50,
     turquoise: ColorPallet.turquoise.shade50,
+    female: ColorPallet.error.shade50,
+    male: ColorPallet.indigo.shade50,
   );
 }
