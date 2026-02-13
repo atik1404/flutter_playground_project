@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:go_router/go_router.dart';
 import 'package:playground_flutter_project/common/logger/app_toast.dart';
+import 'package:playground_flutter_project/core/router/app_routes_name.dart';
 import 'package:playground_flutter_project/designsystem/dimensions/app_spacing.dart';
 import 'package:playground_flutter_project/designsystem/extensions/theme_context_extension.dart';
 import 'package:playground_flutter_project/feature/auth/login/bloc/login_bloc.dart';
@@ -31,6 +33,10 @@ class _LoginScreenState extends State<LoginScreen> {
             message: state.toastMessage,
             toastType: ToastType.error,
           );
+        }
+
+        if (state.status.isSuccess) {
+          context.go(AppRoutesName.homeScreen);
         }
       },
       child: AppScaffold(

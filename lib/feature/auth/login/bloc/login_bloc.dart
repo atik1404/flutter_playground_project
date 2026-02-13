@@ -1,10 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:get_it/get_it.dart';
 import 'package:playground_flutter_project/common/extensions/string_extension.dart';
-import 'package:playground_flutter_project/common/logger/app_logger.dart';
-import 'package:playground_flutter_project/core/sharedpref/shared_pref_key.dart';
-import 'package:playground_flutter_project/core/sharedpref/shared_prefs.dart';
 import 'package:playground_flutter_project/designsystem/resources/app_strings.dart';
 import 'package:playground_flutter_project/domain/entities/params/auth/login_params.dart';
 import 'package:playground_flutter_project/domain/usecase/auth/fetch_profile_api_usecase.dart';
@@ -17,7 +13,6 @@ import 'package:playground_flutter_project/feature/auth/login/models/password_va
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final PostLoginApiUsecase _postLoginApiUsecase;
   final FetchProfileApiUseCase _fetchProfileApiUseCase;
-  final SharedPrefs _sharedPrefs = GetIt.I.get<SharedPrefs>();
 
   LoginBloc({
     required PostLoginApiUsecase postLoginApiUsecase,
@@ -81,12 +76,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     );
 
     final result = await _postLoginApiUsecase.invoke(
-      LoginParams(phone: state.phone.value.formatPhoneNumber(), password: state.password.value),
+      LoginParams(
+        phone: state.phone.value.formatPhoneNumber(),
+        password: state.password.value,
+      ),
     );
 
     result.when(
       success: (data) {
-        emit(state.copyWith(status: FormzSubmissionStatus.success));
         add(const FetchProfile());
       },
       failure: (error) {
@@ -111,28 +108,20 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     FetchProfile event,
     Emitter<LoginState> emit,
   ) async {
-    AppLogger.log(
-      "Token: ${_sharedPrefs.getString(key: SharedPrefKey.accessToken)}",
-    );
-    emit(
-      state.copyWith(
-        status: FormzSubmissionStatus.inProgress,
-        isProfileApiSuccess: false,
-        isProfileApiFailed: false,
-      ),
-    );
+    emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
 
     final result = await _fetchProfileApiUseCase.invoke();
 
     result.when(
       success: (data) {
-        emit(
-          state.copyWith(isProfileApiSuccess: true, isProfileApiFailed: false),
-        );
+        emit(state.copyWith(status: FormzSubmissionStatus.success));
       },
       failure: (error) {
         emit(
-          state.copyWith(isProfileApiSuccess: false, isProfileApiFailed: true),
+          state.copyWith(
+            status: FormzSubmissionStatus.failure,
+            errorMessage: error.message,
+          ),
         );
       },
     );

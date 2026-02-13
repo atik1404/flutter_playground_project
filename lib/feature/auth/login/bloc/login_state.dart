@@ -12,8 +12,6 @@ abstract class LoginState with _$LoginState {
     @Default(PhoneValidator.pure()) PhoneValidator phone,
     @Default(PasswordValidator.pure()) PasswordValidator password,
     @Default(false) bool isValid,
-    @Default(false) bool isProfileApiSuccess,
-    @Default(false) bool isProfileApiFailed,
     @Default(true) bool obscurePassword,
     @Default('') String toastMessage,
     @Default('') String errorMessage,
