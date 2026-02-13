@@ -4,6 +4,6 @@ extension StringExtension on String {
       return this;
     }
     
-    return '+880$this';
+    return '+88$this';
   }
 }

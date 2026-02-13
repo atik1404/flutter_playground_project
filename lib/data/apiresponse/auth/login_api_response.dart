@@ -1,16 +1,26 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:playground_flutter_project/data/apiresponse/api_response_annotation.dart';
 
 part 'login_api_response.g.dart';
 
-@JsonSerializable(explicitToJson: true)
+@apiResponse
 class LoginApiResponse {
-  final String? accessToken;
-  final String? expDateTime;
+  final LoginResponse? data;
+  final int? statusCode;
+  final String? message;
 
-  const LoginApiResponse({this.accessToken, this.expDateTime});
+  const LoginApiResponse({this.data, this.statusCode, this.message});
 
   factory LoginApiResponse.fromJson(Map<String, dynamic> json) =>
       _$LoginApiResponseFromJson(json);
+}
 
-  Map<String, dynamic> toJson() => _$LoginApiResponseToJson(this);
+@apiResponse
+class LoginResponse {
+  final String? accessToken;
+  final String? expDateTime;
+
+  LoginResponse({this.accessToken, this.expDateTime});
+
+  factory LoginResponse.fromJson(Map<String, dynamic> json) =>
+      _$LoginResponseFromJson(json);
 }

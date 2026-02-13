@@ -47,10 +47,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       .toList(),
   counter: json['counter'] == null
       ? null
-      : IdNameModel.fromJson(json['counter'] as Map<String, dynamic>),
-  ticketLayout: json['ticketLayout'] == null
-      ? null
-      : IdNameModel.fromJson(json['ticketLayout'] as Map<String, dynamic>),
+      : CounterModel.fromJson(json['counter'] as Map<String, dynamic>),
   printType: json['printType'] as String?,
   permissions: (json['permissions'] as List<dynamic>?)
       ?.map((e) => e as String)
@@ -64,8 +61,8 @@ OperatorModel _$OperatorModelFromJson(Map<String, dynamic> json) =>
 RouteModel _$RouteModelFromJson(Map<String, dynamic> json) =>
     RouteModel(id: json['id'] as String?, name: json['name'] as String?);
 
-IdNameModel _$IdNameModelFromJson(Map<String, dynamic> json) =>
-    IdNameModel(id: json['id'] as String?, name: json['name'] as String?);
+CounterModel _$CounterModelFromJson(Map<String, dynamic> json) =>
+    CounterModel(id: json['id'] as String?, name: json['name'] as String?);
 
 PermissionCategoryModel _$PermissionCategoryModelFromJson(
   Map<String, dynamic> json,

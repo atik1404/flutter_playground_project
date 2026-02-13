@@ -18,4 +18,6 @@ final class SharedPrefKey {
   static const String avatar = 'avatar';
   static const String operatorId = 'operator_id';
   static const String operatorName = 'operator_name';
+  static const String counterId = 'counter_id';
+  static const String counterName = 'counter_name';
 }

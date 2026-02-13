@@ -10,9 +10,9 @@ Map<String, dynamic> _$TripsApiParamsToJson(TripsApiParams instance) =>
     <String, dynamic>{
       'page': instance.page,
       'limit': instance.limit,
-      'fromSubCityId': instance.fromSubCityId,
-      'toSubCityId': instance.toSubCityId,
-      'tripNo': instance.tripNo,
-      'busNumber': instance.busNumber,
-      'date': instance.date,
+      'fromSubCityId': ?instance.fromSubCityId,
+      'toSubCityId': ?instance.toSubCityId,
+      'tripNo': ?instance.tripNo,
+      'busNumber': ?instance.busNumber,
+      'date': ?instance.date,
     };

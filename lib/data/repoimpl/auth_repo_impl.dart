@@ -63,6 +63,8 @@ final class AuthRepoImpl extends AuthRepository {
         ..set(key: SharedPrefKey.countermanId, value: profile.countermanId)
         ..set(key: SharedPrefKey.avatar, value: profile.countermanAvatar)
         ..set(key: SharedPrefKey.operatorId, value: profile.operatorId)
+        ..set(key: SharedPrefKey.counterId, value: profile.counterId)
+        ..set(key: SharedPrefKey.counterName, value: profile.counterName)
         ..set(key: SharedPrefKey.operatorName, value: profile.operatorName);
     }
 

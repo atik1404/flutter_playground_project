@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:playground_flutter_project/designsystem/dimensions/app_spacing.dart';
 import 'package:playground_flutter_project/designsystem/extensions/theme_context_extension.dart';
+import 'package:playground_flutter_project/domain/entities/apientity/trip/trip_api_entity.dart';
 import 'package:playground_flutter_project/ui/components/app_text.dart';
 import 'package:playground_flutter_project/ui/components/button/app_filled_button.dart';
 import 'package:playground_flutter_project/ui/components/button/app_outline_button.dart';
@@ -10,17 +12,19 @@ import 'package:playground_flutter_project/ui/components/dashed_divider.dart';
 import 'package:playground_flutter_project/ui/components/spacer_box.dart';
 
 class TripBookingCard extends StatelessWidget {
-  final VoidCallback? onBookTap;
-  final VoidCallback? onReferTap;
-  final VoidCallback? onTripPassTap;
-  final VoidCallback? onChallanTap;
+  final VoidCallback onBookTap;
+  final VoidCallback onReferTap;
+  final VoidCallback onTripPassTap;
+  final VoidCallback onChallanTap;
+  final TripApiEntity trip;
 
   const TripBookingCard({
     super.key,
-    this.onBookTap,
-    this.onReferTap,
-    this.onTripPassTap,
-    this.onChallanTap,
+    required this.onBookTap,
+    required this.onReferTap,
+    required this.onTripPassTap,
+    required this.onChallanTap,
+    required this.trip,
   });
 
   @override
@@ -76,19 +80,19 @@ class TripBookingCard extends StatelessWidget {
             children: [
               _buildBadge(
                 context,
-                "Available 20",
+                "Available ${trip.seatCount}",
                 backgroundColor.jungleGreen,
                 textColors.jungleGreen,
               ),
               _buildBadge(
                 context,
-                "Reserve 02/00",
+                "Reserve ${trip.totalReservedMale}/${trip.totalReservedFemale}",
                 backgroundColor.turquoise,
                 textColors.turquoise,
               ),
               _buildBadge(
                 context,
-                "Sold 16/12",
+                "Sold ${trip.totalSoldMale}/${trip.totalSoldFemale}",
                 backgroundColor.indigo,
                 textColors.indigo,
               ),
@@ -96,7 +100,7 @@ class TripBookingCard extends StatelessWidget {
           ),
         ),
         AppText(
-          "TK 1,450",
+          "TK ${trip.amount.first}",
           style: context.typography.titleSmallSemiBold,
           color: textColors.navyBlue,
         ),
@@ -136,7 +140,7 @@ class TripBookingCard extends StatelessWidget {
         AppText("Coach: ", style: context.typography.bodySmallSemiBold),
         Expanded(
           child: AppText(
-            " 406 | Non-Ac | Business (Sleeper)",
+            "${trip.tripNo} - ${trip.busType} - ${trip.direction}",
             style: context.typography.bodySmallRegular,
             color: context.textColors.secondary,
             maxLines: 1,
@@ -155,7 +159,7 @@ class TripBookingCard extends StatelessWidget {
           child: _buildDateTimeColumn(
             context,
             "Trip Time & Date",
-            "12-Aug-2025 | 12:50 PM",
+            "${_parseDate(trip.arrivalDateTime)} | ${_parseTime(trip.arrivalDateTime)}",
             CrossAxisAlignment.start,
           ),
         ),
@@ -164,7 +168,7 @@ class TripBookingCard extends StatelessWidget {
           child: _buildDateTimeColumn(
             context,
             "Boarding Time & Date",
-            "12-Aug-2025 | 5:50 PM",
+            "${_parseDate(trip.departureDateTime)} | ${_parseTime(trip.departureDateTime)}",
             CrossAxisAlignment.end,
           ),
         ),
@@ -199,7 +203,7 @@ class TripBookingCard extends StatelessWidget {
         AppText("Route: ", style: context.typography.bodySmallSemiBold),
         Expanded(
           child: AppText(
-            "Nilphamari - Rangpur - Bogura - Sirajganj-Tangail-C-Nilphamari - Rangpur - Bogura - Sirajganj-Tangail-C",
+            trip.routeName,
             style: context.typography.bodySmallRegular,
             color: context.textColors.secondary,
             maxLines: 1,
@@ -241,5 +245,13 @@ class TripBookingCard extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String _parseDate(String date) {
+    return Jiffy.parse(date).yMMMd;
+  }
+
+  String _parseTime(String date) {
+    return Jiffy.parse(date).jm;
   }
 }

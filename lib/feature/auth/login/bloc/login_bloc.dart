@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:get_it/get_it.dart';
+import 'package:playground_flutter_project/common/extensions/string_extension.dart';
 import 'package:playground_flutter_project/common/logger/app_logger.dart';
 import 'package:playground_flutter_project/core/sharedpref/shared_pref_key.dart';
 import 'package:playground_flutter_project/core/sharedpref/shared_prefs.dart';
@@ -80,7 +81,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     );
 
     final result = await _postLoginApiUsecase.invoke(
-      LoginParams(phone: state.phone.value, password: state.password.value),
+      LoginParams(phone: state.phone.value.formatPhoneNumber(), password: state.password.value),
     );
 
     result.when(

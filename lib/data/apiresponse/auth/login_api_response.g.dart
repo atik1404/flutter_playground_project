@@ -8,12 +8,15 @@ part of 'login_api_response.dart';
 
 LoginApiResponse _$LoginApiResponseFromJson(Map<String, dynamic> json) =>
     LoginApiResponse(
+      data: json['data'] == null
+          ? null
+          : LoginResponse.fromJson(json['data'] as Map<String, dynamic>),
+      statusCode: (json['statusCode'] as num?)?.toInt(),
+      message: json['message'] as String?,
+    );
+
+LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) =>
+    LoginResponse(
       accessToken: json['accessToken'] as String?,
       expDateTime: json['expDateTime'] as String?,
     );
-
-Map<String, dynamic> _$LoginApiResponseToJson(LoginApiResponse instance) =>
-    <String, dynamic>{
-      'accessToken': instance.accessToken,
-      'expDateTime': instance.expDateTime,
-    };

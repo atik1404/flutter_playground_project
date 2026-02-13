@@ -4,8 +4,11 @@ import 'package:playground_flutter_project/designsystem/dimensions/app_spacing.d
 import 'package:playground_flutter_project/designsystem/extensions/theme_context_extension.dart';
 import 'package:playground_flutter_project/feature/trip/home/bloc/home_bloc.dart';
 import 'package:playground_flutter_project/feature/trip/home/bloc/home_event.dart';
+import 'package:playground_flutter_project/feature/trip/home/bloc/home_state.dart';
 import 'package:playground_flutter_project/feature/trip/home/widgets/home_toolbar.dart';
 import 'package:playground_flutter_project/feature/trip/home/widgets/trip_booking_card.dart';
+import 'package:playground_flutter_project/ui/common/error_ui.dart';
+import 'package:playground_flutter_project/ui/common/full_screen_loader.dart';
 import 'package:playground_flutter_project/ui/components/app_scaffold.dart';
 import 'package:playground_flutter_project/ui/components/spacer_box.dart';
 
@@ -35,27 +38,54 @@ class _HomeScreenState extends State<HomeScreen> {
           SpacerBox(
             height: spaceSize.md,
           ), // Space between toolbar and booking card
-          Expanded(child: _buildTripList(context, [])),
+          Expanded(child: _buildTripList(context)),
         ],
       ),
     );
   }
 
-  Widget _buildTripList(BuildContext context, List<String> trips) {
+  Widget _buildTripList(BuildContext context) {
     final spaceSize = context.spacingSizes;
 
-    return RefreshIndicator(
-      onRefresh: () async => {},
-      child: ListView.builder(
-        itemCount: 20,
-        padding: AppSpacing.only(
-          bottom: spaceSize.xxl,
-          top: spaceSize.md,
-          start: spaceSize.md,
-          end: spaceSize.md,
-        ),
-        itemBuilder: (context, index) => const TripBookingCard(),
-      ),
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, state) {
+        final isDataEmpty = state.movies.isEmpty;
+
+        if (state.isLoading && isDataEmpty) {
+          return const FullScreenLoader();
+        }
+
+        if (state.errorMessage.isNotEmpty && isDataEmpty) {
+          return ErrorUi(
+            errorMessage: state.errorMessage,
+            onRetry: () {
+              context.read<HomeBloc>().add(const HomeEvent.fetchTrips(1));
+            },
+          );
+        }
+
+        return RefreshIndicator(
+          onRefresh: () async => {
+            context.read<HomeBloc>().add(const HomeEvent.fetchTrips(1)),
+          },
+          child: ListView.builder(
+            itemCount: state.movies.length,
+            padding: AppSpacing.only(
+              bottom: spaceSize.xxl,
+              top: spaceSize.md,
+              start: spaceSize.md,
+              end: spaceSize.md,
+            ),
+            itemBuilder: (context, index) => TripBookingCard(
+              onBookTap: () {},
+              onReferTap: () {},
+              onTripPassTap: () {},
+              onChallanTap: () {},
+              trip: state.movies[index],
+            ),
+          ),
+        );
+      },
     );
   }
 }

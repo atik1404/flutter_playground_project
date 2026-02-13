@@ -4,6 +4,8 @@ import 'package:playground_flutter_project/domain/usecase/trip/fetch_trips_api_u
 import 'package:playground_flutter_project/feature/trip/home/bloc/home_event.dart';
 import 'package:playground_flutter_project/feature/trip/home/bloc/home_state.dart';
 
+import 'package:jiffy/jiffy.dart';
+
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final FetchTripsApiUsecase _fetchTripsApiUsecase;
 
@@ -11,15 +13,17 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     : _fetchTripsApiUsecase = fetchTripsApiUsecase,
       super(const HomeState()) {
     on<FetchTrips>(_onFetchTrips);
-    add(const HomeEvent.fetchTrips(1)); // Initial fetch for page 1
+    //add(const HomeEvent.fetchTrips(1)); // Initial fetch for page 1
   }
 
-  Future<void> _onFetchTrips(
-    FetchTrips event,
-    Emitter<HomeState> emit,
-  ) async {
+  Future<void> _onFetchTrips(FetchTrips event, Emitter<HomeState> emit) async {
+    emit(state.copyWith(isLoading: true, errorMessage: ''));
     final result = await _fetchTripsApiUsecase.invoke(
-      TripsApiParams(page: state.page, limit: 20),
+      TripsApiParams(
+        page: state.page,
+        limit: 20,
+        date: Jiffy.now().toUtc().toString(),
+      ),
     );
 
     result.when(
@@ -29,11 +33,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             movies: [...state.movies, ...data],
             page: state.page + 1,
             isLastPage: data.isEmpty,
+            isLoading: false,
           ),
         );
       },
       failure: (error) {
-        emit(state.copyWith(errorMessage: error.toString()));
+        emit(state.copyWith(isLoading: false, errorMessage: error.toString()));
       },
     );
   }

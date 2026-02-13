@@ -11,6 +11,8 @@ final class ProfileApiEnity {
   final String routeId;
   final String routeName;
   final String printerType;
+  final String counterId;
+  final String counterName;
   final List<String> permissions;
 
   ProfileApiEnity({
@@ -26,6 +28,8 @@ final class ProfileApiEnity {
     required this.routeId,
     required this.routeName,
     required this.printerType,
+    required this.counterId,
+    required this.counterName,
     required this.permissions,
   });
 }

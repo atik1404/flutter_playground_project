@@ -36,8 +36,7 @@ class UserModel {
   final String? role;
   final OperatorModel? operator;
   final List<RouteModel>? routes;
-  final IdNameModel? counter;
-  final IdNameModel? ticketLayout;
+  final CounterModel? counter;
   final String? printType;
   final List<String>? permissions;
   final bool? status;
@@ -51,7 +50,6 @@ class UserModel {
     this.operator,
     this.routes,
     this.counter,
-    this.ticketLayout,
     this.printType,
     this.permissions,
     this.status,
@@ -84,14 +82,14 @@ class RouteModel {
 }
 
 @apiResponse
-class IdNameModel {
+class CounterModel {
   final String? id;
   final String? name;
 
-  IdNameModel({this.id, this.name});
+  CounterModel({this.id, this.name});
 
-  factory IdNameModel.fromJson(Map<String, dynamic> json) =>
-      _$IdNameModelFromJson(json);
+  factory CounterModel.fromJson(Map<String, dynamic> json) =>
+      _$CounterModelFromJson(json);
 }
 
 @apiResponse
